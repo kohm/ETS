@@ -1,4 +1,44 @@
 .trash { color:rgb(209, 91, 71); }
+.admin-wrapper {
+  margin-top: -20px;
+  padding-left: 100px;
+}
+.admin-dashboard {
+
+}
+.side-bar {
+  border-right: 1px solid #e7e7e7;
+  height: 100%;
+  margin-left: -85px;
+  position: absolute;
+  width: 61px;
+  .icon {
+    font-size: 18px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 60px;
+  }
+  .icon:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+}
+.rapid-view {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  .widget {
+    background-color: #3498db;
+    height: 150px;
+    width: 300px;
+    .title {
+      color: #ffffff;
+    }
+  }
+}
 
 .user-list {
 	li {
