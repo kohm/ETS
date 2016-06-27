@@ -1,5 +1,92 @@
-<div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+<div class="container admin">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="items">
+        <h3>Items</h3>
+        <a class="btn btn-default" href="#" role="button" ng-click="show_item_form = !show_item_form">Nuevo</a>
+        <a class="btn btn-default" href="#" role="button">Modificar</a>
+        <div class="item-form" ng-show="show_item_form">
+          <form action="">
+            <div class="form-group">
+              <label for="itemName">Nombre</label>
+              <input type="text" class="form-control" id="itemName" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="itemCostPrice">Precio de costo</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" id="itemCostPrice" placeholder="Precio de costo">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="itemListPrice">Precio de lista</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" id="itemListPrice" placeholder="Precio de lista">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="itemStock">Stock (Total)</label>
+              <input type="text" class="form-control" id="itemStock" placeholder="Stock">
+            </div>
+            <div class="form-group">
+              <label for="itemDepot">Stock (Depósito)</label>
+              <input type="text" class="form-control" id="itemDepot" placeholder="Depósito">
+            </div>
+            <div class="form-group">
+              <label for="itemLocal">Stock (Local)</label>
+              <input type="text" class="form-control" id="itemLocal" placeholder="Local">
+            </div>
+            <div class="form-group">
+              <label for="itemSupplier">Proveedor</label>
+              <input type="text" class="form-control" id="itemSupplier" placeholder="Proveedor">
+            </div>
+            <div class="form-group">
+              <label>Etiquetas</label>
+              <tags-input ng-model="item_tags"></tags-input>
+            </div>
+            <div class="form-group">
+              <label for="itemDescription">Descripción</label>
+              <textarea type="text" class="form-control" id="itemDescription" placeholder="Agregar descripcion textual del item"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Crear</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="purchases">
+        <h3>Comprar</h3>
+        <a class="btn btn-default" href="#" role="button" ng-click="show_purchase_form = !show_purchase_form">Nuevo</a>
+        <a class="btn btn-default" href="#" role="button">Buscar</a>
+        <div class="purchase-form" ng-show="show_purchase_form"><form action="">
+          <div class="form-group">
+            <label for="purchaseName">Nombre</label>
+            <input type="text" class="form-control" id="purchaseName" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="purchaseSupplier">Proveedor</label>
+            <input type="text" class="form-control" id="purchaseSupplier" placeholder="Proveedor">
+          </div>
+        </form></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="suppliers">
+        <h3>Proveedores</h3>
+        <a class="btn btn-default" href="#" role="button">Nuevo</a>
+        <a class="btn btn-default" href="#" role="button">Modificar</a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="users">
+        <h3>Usuarios</h3>
+        <a class="btn btn-default" href="#" role="button">Nuevo</a>
+        <a class="btn btn-default" href="#" role="button">Modificar</a>
+      </div>
+    </div>
+  </div>
+  <!--<p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
   <ul class="list-group user-list">
     <li class="list-group-item" ng-repeat="user in admin.users">
 	    <div class="user-info">
@@ -8,5 +95,5 @@
 	    </div>
         <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     </li>
-  </ul>
+  </ul>-->
 </div>
