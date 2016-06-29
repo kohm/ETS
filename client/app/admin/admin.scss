@@ -1,15 +1,17 @@
 .trash { color:rgb(209, 91, 71); }
 .admin-wrapper {
   margin-top: -20px;
-  padding-left: 100px;
-}
-.admin-dashboard {
 
 }
-.side-bar {
+.admin-dashboard {
+  margin-left: 61px;
+  padding-left: 39px;
+  padding-top: 20px;
+}
+.admin-side-bar {
   border-right: 1px solid #e7e7e7;
+  box-shadow: 6px 0px 10px -2px rgb(232, 232, 232);
   height: 100%;
-  margin-left: -85px;
   position: absolute;
   width: 61px;
   .icon {
@@ -32,10 +34,21 @@
 
   .widget {
     background-color: #3498db;
+    border-radius: 5px;
+    color: #ffffff;
     height: 150px;
     width: 300px;
     .title {
-      color: #ffffff;
+      border-bottom: 1px solid #3C8CC2;
+      margin: 10px 5px 5px;
+      padding-bottom: 5px;
+    }
+    .widget-container {
+      padding: 10px;
+    }
+    .widget-details, .widget-totals {
+      float: left;
+      width: 140px;
     }
   }
 }
