@@ -27,32 +27,6 @@
     cursor: pointer;
   }
 }
-.rapid-view {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-
-  .widget {
-    background-color: #3498db;
-    border-radius: 5px;
-    color: #ffffff;
-    height: 150px;
-    width: 300px;
-    .title {
-      border-bottom: 1px solid #3C8CC2;
-      margin: 10px 5px 5px;
-      padding-bottom: 5px;
-    }
-    .widget-container {
-      display: table;
-      padding: 10px;
-    }
-    .widget-details, .widget-totals {
-      display: table-cell;
-      width: 140px;
-    }
-  }
-}
 
 .user-list {
 	li {
