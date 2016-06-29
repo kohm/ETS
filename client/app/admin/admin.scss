@@ -44,10 +44,11 @@
       padding-bottom: 5px;
     }
     .widget-container {
+      display: table;
       padding: 10px;
     }
     .widget-details, .widget-totals {
-      float: left;
+      display: table-cell;
       width: 140px;
     }
   }
