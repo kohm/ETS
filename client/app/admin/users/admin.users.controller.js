@@ -12,6 +12,11 @@
     alertLocation() {
       alert(this.$location.path());
     }
+    delete(user) {
+      user.$remove();
+      this.users.splice(this.users.indexOf(user), 1);
+    }
+
   }
 
   angular.module('eetApp.admin')
