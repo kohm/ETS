@@ -1,8 +1,17 @@
 <div class="container admin-wrapper">
   <div class="admin-side-bar">
-    <a ui-sref="admin.items"><div class="icon"><i class="fa fa-usd" aria-hidden="true"></i></div></a>
-    <a ui-sref="admin.stats"><div class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></div></a>
-    <a ui-sref="admin.suppliers"><div class="icon"><i class="fa fa-truck" aria-hidden="true"></i></div></a>
+    <a ui-sref="admin.items" ui-sref-active="active" title="Operaciones">
+      <div class="icon"><i class="fa fa-usd" aria-hidden="true"></i></div>
+    </a>
+    <a ui-sref="admin.users" ui-sref-active="active" title="Usuarios">
+      <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+    </a>
+    <a ui-sref="admin.stats" ui-sref-active="active" title="Estadísticas">
+      <div class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+    </a>
+    <a ui-sref="admin.suppliers" ui-sref-active="active" title="Proveedores">
+      <div class="icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+    </a>
     <div class="icon"></div>
     <div class="icon"></div>
   </div>

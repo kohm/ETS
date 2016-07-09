@@ -10,11 +10,12 @@
 }
 .admin-side-bar {
   border-right: 1px solid #e7e7e7;
-  box-shadow: 6px 0px 10px -2px rgb(232, 232, 232);
+  box-shadow: 6px 0px 10px -2px #e7e7e7;
   height: 100%;
   position: absolute;
   width: 61px;
-  .icon {
+  a {
+    display: block;
     font-size: 18px;
     height: 60px;
     line-height: 60px;
@@ -22,9 +23,12 @@
     vertical-align: bottom;
     width: 60px;
   }
-  .icon:hover {
+  a:hover {
     background-color: #f8f8f8;
     cursor: pointer;
+  }
+  a.active {
+    background-color: #e7e7e7;
   }
 }
 

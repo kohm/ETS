@@ -2,21 +2,19 @@
 
 (function () {
 
-  class AdminController {
+  class AdminUsersController {
 
     constructor($scope, $location, User) {
       // Use the User $resource to fetch all users
       this.$location = $location;
       this.users = User.query();
     }
-
-    delete(user) {
-      user.$remove();
-      this.users.splice(this.users.indexOf(user), 1);
+    alertLocation() {
+      alert(this.$location.path());
     }
   }
 
   angular.module('eetApp.admin')
-    .controller('AdminController', AdminController);
+    .controller('AdminUsersController', AdminUsersController);
 
 })();

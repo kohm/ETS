@@ -24,5 +24,11 @@ angular.module('eetApp.admin')
         url: '/suppliers',
         templateUrl: 'app/admin/suppliers/suppliers.html',
         controllerAs: 'adminSuppliers'
+      })
+      .state('admin.users', {
+        url: '/users',
+        templateUrl: 'app/admin/users/users.html',
+        controller: 'AdminUsersController',
+        controllerAs: 'adminUsers'
       });
   });
