@@ -13,22 +13,26 @@ angular.module('eetApp.admin')
       .state('admin.items', {
         url: '/items',
         templateUrl: 'app/admin/items/items.html',
-        controllerAs: 'adminItems'
+        controllerAs: 'adminItems',
+        authenticate: 'admin'
       })
       .state('admin.stats', {
         url: '/stats',
         templateUrl: 'app/admin/stats/stats.html',
-        controllerAs: 'adminStats'
+        controllerAs: 'adminStats',
+        authenticate: 'admin'
       })
       .state('admin.suppliers', {
         url: '/suppliers',
         templateUrl: 'app/admin/suppliers/suppliers.html',
-        controllerAs: 'adminSuppliers'
+        controllerAs: 'adminSuppliers',
+        authenticate: 'admin'
       })
       .state('admin.users', {
         url: '/users',
         templateUrl: 'app/admin/users/users.html',
         controller: 'AdminUsersController',
-        controllerAs: 'adminUsers'
+        controllerAs: 'adminUsers',
+        authenticate: 'admin'
       });
   });

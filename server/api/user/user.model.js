@@ -24,6 +24,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  enabled: {
+    type: Boolean,
+    default: true
+  },
   password: {
     type: String,
     required: function() {

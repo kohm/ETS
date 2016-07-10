@@ -35,9 +35,10 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
+  console.log(req.body);
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  //newUser.role = 'user';
   newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
