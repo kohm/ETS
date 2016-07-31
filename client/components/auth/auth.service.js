@@ -57,6 +57,9 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     createUser(user, callback) {
+      return User.save(user).$promise;
+    },
+    /*createUser(user, callback) {
       return User.save(user,
         function(data) {
           $cookies.put('token', data.token);
@@ -67,7 +70,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
           Auth.logout();
           return safeCb(callback)(err);
         }).$promise;
-    },
+    },*/
 
     /**
      * Change password

@@ -9,13 +9,10 @@
       this.$location = $location;
       this.Auth = Auth;
       this.users = User.query();
+      this.User = User;
       this.user = {};
       this.errors = {};
       this.submitted = false;
-    }
-
-    alertLocation() {
-      alert(this.$location.path());
     }
 
     delete(user) {
@@ -32,6 +29,13 @@
       user.$remove();
       this.users.splice(this.users.indexOf(user), 1);
     }
+    reset(form) {
+      this.user = {};
+      form.password = '';
+      form.confirmPassword = '';
+      form.$setPristine();
+      form.$setUntouched();
+    }
 
     register(form) {
       //TODO Remove login/redirection/interceptor when a new user is registered
@@ -46,8 +50,16 @@
         };
         this.Auth.createUser(newUser)
           .then(() => {
-            // Account created, redirect to home
-            this.users.push(newUser);
+            //clean form
+            this.users = this.User.query();
+            this.user = {};
+            this.errors = {};
+            form.name = '';
+            form.email = '';
+            form.password = '';
+            form.confirmPassword = '';
+            form.$setPristine();
+            form.$setUntouched();
           })
           .catch(err => {
             err = err.data;
