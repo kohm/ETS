@@ -21,14 +21,27 @@
     }
 
     enable(user) {
-      user.$remove();
-      this.users.splice(this.users.indexOf(user), 1);
+      let updateUser = {
+        _id: user._id,
+        enabled: user.enabled
+      };
+      if (user.enabled) {
+        updateUser.enabled = false;
+        this.Auth.updateSettings(updateUser).then(() => user.enabled = false);
+      } else {
+        updateUser.enabled = true;
+        this.Auth.updateSettings(updateUser).then(() => user.enabled = true);
+      }
+
+
+
     }
 
     disable(user) {
       user.$remove();
       this.users.splice(this.users.indexOf(user), 1);
     }
+
     reset(form) {
       this.user = {};
       form.password = '';

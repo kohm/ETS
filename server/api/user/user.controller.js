@@ -35,7 +35,6 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
-  console.log(req.body);
   var newUser = new User(req.body);
   newUser.provider = 'local';
   //newUser.role = 'user';
@@ -121,17 +120,16 @@ export function me(req, res, next) {
  * Change settings
  */
 export function settings(req, res, next) {
-  var userId = req.user._id;
-  var enabled = req.body.enabled;
-
+  var userId = req.body.user._id;
+  var enabled = req.body.user.enabled;
   return User.findById(userId).exec()
-    .then(user => {
+    .then((user) => {
       user.enabled = enabled;
       return user.save()
         .then(() => {
           res.status(204).end();
         })
-        .catch(validationError(res));
+        .catch(validationError(res))
     });
 }
 

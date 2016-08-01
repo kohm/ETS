@@ -1,7 +1,7 @@
 <div class="row">
   <h1>Usuarios</h1>
   <div class="col-lg-6">
-    <form class="form" name="form" ng-submit="adminUsers.register(form)">
+    <form class="form" name="form" ng-submit="adminUsers.register(form)" novalidate>
       <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminUsers.submitted,
                                             'has-error': form.name.$invalid && adminUsers.submitted }">
         <label>Nombre</label>
@@ -88,8 +88,9 @@
           <strong>{{user.name}}</strong><br>
           <span class="text-muted">{{user.email}} {{user.enabled}}</span>
         </div>
-        <a ng-show="user.enabled" ng-click="adminUsers.disable(user)" class="trash"><span class="fa fa-thumbs-down fa-2x"></span></a>
-        <a ng-hide="user.enabled" ng-click="adminUsers.enable(user)" class="trash"><span class="fa fa-thumbs-down fa-2x"></span></a>
+        <a ng-click="adminUsers.enable(user)" ng-class="user.enabled ? 'enabled' : 'disabled'">
+          <span ng-class="user.enabled ? 'fa fa-thumbs-up fa-2x' : 'fa fa-thumbs-down fa-2x'"></span>
+        </a>
       </li>
     </ul>
   </div>

@@ -92,6 +92,28 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
     },
 
     /**
+     * Change password
+     *
+     * @param  {String}   user
+     * @param  {Function} callback    - optional, function(error, user)
+     * @return {Promise}
+     */
+    updateSettings(user, callback) {
+      console.log('Auth user enabled');
+      console.log(user._id);
+      console.log(user.enabled);
+
+      return User.updateSettings({ id: user._id }, {
+        user: user
+      }, function() {
+        return safeCb(callback)(null);
+      }, function(err) {
+        return safeCb(callback)(err);
+      }).$promise;
+    },
+
+
+    /**
      * Gets all available info on a user
      *   (synchronous|asynchronous)
      *
