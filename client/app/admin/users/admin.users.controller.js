@@ -51,7 +51,6 @@
     }
 
     register(form) {
-      //TODO Remove login/redirection/interceptor when a new user is registered
       this.submitted = true;
 
       if (form.$valid) {

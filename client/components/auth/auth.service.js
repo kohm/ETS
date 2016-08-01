@@ -99,10 +99,6 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     updateSettings(user, callback) {
-      console.log('Auth user enabled');
-      console.log(user._id);
-      console.log(user.enabled);
-
       return User.updateSettings({ id: user._id }, {
         user: user
       }, function() {
