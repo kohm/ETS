@@ -86,7 +86,7 @@
       <li class="list-group-item" ng-repeat="user in adminUsers.users">
         <div class="user-info">
           <strong>{{user.name}}</strong><br>
-          <span class="text-muted">{{user.email}} {{user.enabled}}</span>
+          <span class="text-muted">{{user.email}}</span>
         </div>
         <a ng-click="adminUsers.enable(user)" ng-class="user.enabled ? 'enabled' : 'disabled'"
            uib-tooltip="Dar de baja" tooltip-placement="right">

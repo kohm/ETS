@@ -1,20 +1,67 @@
 'use strict';
 
 import mongoose from 'mongoose';
-//TODO ADD MORE FIELDS AND VALIDATIONS
 var SupplierSchema = new mongoose.Schema({
-  name: String,
-  legalName: String,
-  taxId: String,
-  contactName: String,
-  email: String,
-  phone: String,
-  phoneAlt: String,
-  fax: String,
-  address: String,
-  country: String,
-  state: String,
-  city: String
+  name: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  legalName: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  taxId: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  contactName: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  phone: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  phoneAlt: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  fax: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  address: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  country: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  state: {
+    type: String,
+    lowercase: true,
+    trim: true
+  },
+  city: {
+    type: String,
+    lowercase: true,
+    trim: true
+  }
 });
 
 export default mongoose.model('Supplier', SupplierSchema);
