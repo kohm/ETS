@@ -25,6 +25,7 @@ angular.module('eetApp.admin')
       .state('admin.suppliers', {
         url: '/suppliers',
         templateUrl: 'app/admin/suppliers/suppliers.html',
+        controller: 'AdminSuppliersController',
         controllerAs: 'adminSuppliers',
         authenticate: 'admin'
       })

@@ -41,7 +41,12 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  github: {}
+  github: {},
+  created: {
+    date: {
+      type: Date, default: Date.now
+    }
+  }
 });
 
 /**

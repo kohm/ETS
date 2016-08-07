@@ -6,7 +6,7 @@
                                             'has-error': form.name.$invalid && adminUsers.submitted }">
         <label>Nombre</label>
 
-        <input type="text" name="name" class="form-control" ng-model="adminUsers.user.name"
+        <input type="text" name="name" class="form-control input-sm" ng-model="adminUsers.user.name"
                required/>
         <p class="help-block" ng-show="form.name.$error.required && adminUsers.submitted">
           El nombre es requerido
@@ -17,7 +17,7 @@
                                             'has-error': form.email.$invalid && adminUsers.submitted }">
         <label>Email</label>
 
-        <input type="email" name="email" class="form-control" ng-model="adminUsers.user.email"
+        <input type="email" name="email" class="form-control input-sm" ng-model="adminUsers.user.email"
                required
                mongoose-error/>
         <p class="help-block" ng-show="form.email.$error.email && adminUsers.submitted">
@@ -35,7 +35,7 @@
                                             'has-error': form.password.$invalid && adminUsers.submitted }">
         <label>Password</label>
 
-        <input type="password" name="password" class="form-control" ng-model="adminUsers.user.password"
+        <input type="password" name="password" class="form-control input-sm" ng-model="adminUsers.user.password"
                ng-minlength="3"
                required
                mongoose-error/>
@@ -51,7 +51,7 @@
       <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && adminUsers.submitted,
                                             'has-error': form.confirmPassword.$invalid && adminUsers.submitted }">
         <label>Repetir Password</label>
-        <input type="password" name="confirmPassword" class="form-control" ng-model="adminUsers.user.confirmPassword"
+        <input type="password" name="confirmPassword" class="form-control input-sm" ng-model="adminUsers.user.confirmPassword"
                match="adminUsers.user.password"
                ng-minlength="3" required/>
         <p class="help-block"
@@ -62,7 +62,7 @@
 
       <div class="form-group">
         <label>Rol</label>
-        <select class="form-control" name="roleSelection" id="roleSelection" ng-model="adminUsers.user.role">
+        <select class="form-control input-sm" name="roleSelection" id="roleSelection" ng-model="adminUsers.user.role">
           <option value="admin">Administrador</option>
           <option value="owner">Dueño</option>
           <option value="seller">Vendedor</option>
@@ -88,7 +88,8 @@
           <strong>{{user.name}}</strong><br>
           <span class="text-muted">{{user.email}} {{user.enabled}}</span>
         </div>
-        <a ng-click="adminUsers.enable(user)" ng-class="user.enabled ? 'enabled' : 'disabled'">
+        <a ng-click="adminUsers.enable(user)" ng-class="user.enabled ? 'enabled' : 'disabled'"
+           uib-tooltip="Dar de baja" tooltip-placement="right">
           <span ng-class="user.enabled ? 'fa fa-thumbs-up fa-2x' : 'fa fa-thumbs-down fa-2x'"></span>
         </a>
       </li>
