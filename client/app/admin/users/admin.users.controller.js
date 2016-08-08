@@ -4,15 +4,23 @@
 
   class AdminUsersController {
 
-    constructor($scope, $location, Auth, User) {
+    constructor($scope, $location, Auth, socket, User) {
       // Use the User $resource to fetch all users
       this.$location = $location;
       this.Auth = Auth;
+      this.socket = socket;
       this.users = User.query();
       this.User = User;
       this.user = {};
       this.errors = {};
       this.submitted = false;
+      $scope.$on('$destroy', function () {
+        socket.unsyncUpdates('user');
+      });
+    }
+
+    $onInit() {
+      this.socket.syncUpdates('user', this.users);
     }
 
     delete(user) {
@@ -32,8 +40,6 @@
         updateUser.enabled = true;
         this.Auth.updateSettings(updateUser).then(() => user.enabled = true);
       }
-
-
 
     }
 
@@ -76,7 +82,6 @@
           .catch(err => {
             err = err.data;
             this.errors = {};
-
             // Update validity of form fields that match the mongoose errors
             angular.forEach(err.errors, (error, field) => {
               form[field].$setValidity('mongoose', false);
@@ -87,7 +92,11 @@
     }
   }
 
-  angular.module('eetApp.admin')
-    .controller('AdminUsersController', AdminUsersController);
+  angular.module('eetApp')
+    .component('adminUsers', {
+      controller: AdminUsersController,
+      controllerAs: 'adminUsers',
+      templateUrl: 'app/admin/users/users.html'
+    })
 
 })();

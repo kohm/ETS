@@ -5,9 +5,7 @@ angular.module('eetApp.admin')
     $stateProvider
       .state('admin', {
         url: '/admin',
-        templateUrl: 'app/admin/admin.html',
-        controller: 'AdminController',
-        controllerAs: 'admin',
+        template: '<admin></admin>',
         authenticate: 'admin'
       })
       .state('admin.items', {
@@ -24,16 +22,12 @@ angular.module('eetApp.admin')
       })
       .state('admin.suppliers', {
         url: '/suppliers',
-        templateUrl: 'app/admin/suppliers/suppliers.html',
-        controller: 'AdminSuppliersController',
-        controllerAs: 'adminSuppliers',
+        template: '<admin-suppliers></admin-suppliers>',
         authenticate: 'admin'
       })
       .state('admin.users', {
         url: '/users',
-        templateUrl: 'app/admin/users/users.html',
-        controller: 'AdminUsersController',
-        controllerAs: 'adminUsers',
+        template: '<admin-users></admin-users>',
         authenticate: 'admin'
       });
   });

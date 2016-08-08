@@ -8,6 +8,7 @@
       // Use the User $resource to fetch all users
       this.$location = $location;
       this.users = User.query();
+      this.$scope = $scope;
     }
 
     delete(user) {
@@ -17,6 +18,9 @@
   }
 
   angular.module('eetApp.admin')
-    .controller('AdminController', AdminController);
+    .component('admin', {
+      templateUrl: 'app/admin/admin.html',
+      controller: AdminController
+    })
 
 })();

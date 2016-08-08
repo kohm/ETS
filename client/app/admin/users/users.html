@@ -1,6 +1,6 @@
+<h1>Usuarios</h1>
 <div class="row">
-  <h1>Usuarios</h1>
-  <div class="col-lg-6">
+  <div class="col-md-6 col-lg-3">
     <form class="form" name="form" ng-submit="adminUsers.register(form)" novalidate>
       <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminUsers.submitted,
                                             'has-error': form.name.$invalid && adminUsers.submitted }">
@@ -81,7 +81,7 @@
       <hr/>
     </form>
   </div>
-  <div class="col-lg-6">
+  <div class="col-md-6 col-lg-4">
     <ul class="list-group user-list">
       <li class="list-group-item" ng-repeat="user in adminUsers.users">
         <div class="user-info">

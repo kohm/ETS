@@ -2,7 +2,7 @@
 /*.trash { color:rgb(209, 91, 71); }*/
 .trash { color: $brand-danger; }
 .admin-wrapper {
-  margin-top: -20px;
+  padding-left: 0;
 
 }
 .admin-dashboard {
@@ -17,6 +17,7 @@
   position: absolute;
   width: 61px;
   a {
+    border-bottom: 1px solid #DDDDDD;
     display: block;
     font-size: 18px;
     height: 60px;

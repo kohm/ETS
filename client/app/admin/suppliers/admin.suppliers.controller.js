@@ -72,6 +72,10 @@
   }
 
   angular.module('eetApp.admin')
-    .controller('AdminSuppliersController', AdminSuppliersController);
+    .component('adminSuppliers', {
+      controller: AdminSuppliersController,
+      controllerAs: 'adminSuppliers',
+      templateUrl: 'app/admin/suppliers/suppliers.html'
+    })
 
 })();

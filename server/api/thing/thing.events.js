@@ -25,6 +25,8 @@ for (var e in events) {
 
 function emitEvent(event) {
   return function(doc) {
+    console.log(doc);
+    console.log('event emmited from THING');
     ThingEvents.emit(event + ':' + doc._id, doc);
     ThingEvents.emit(event, doc);
   }

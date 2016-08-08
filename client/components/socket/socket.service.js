@@ -26,6 +26,7 @@ angular.module('eetApp')
        * @param {Function} cb
        */
       syncUpdates(modelName, array, cb) {
+        console.log('syncUpdates');
         cb = cb || angular.noop;
 
         /**
