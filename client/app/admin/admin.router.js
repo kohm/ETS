@@ -21,7 +21,7 @@ angular.module('eetApp.admin')
         authenticate: 'admin'
       })
       .state('admin.suppliers', {
-        url: '/suppliers',
+        url: '/suppliers/:id',
         template: '<admin-suppliers></admin-suppliers>',
         authenticate: 'admin'
       })
