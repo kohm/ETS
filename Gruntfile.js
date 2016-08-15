@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         tasks: ['injector:sass']
       },
       sass: {
-        files: ['<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
+        files: ['<%= yeoman.client %>/{app,components,assets/scss}/**/*.{scss,sass}'],
         tasks: ['sass', 'postcss']
       },
       gruntfile: {

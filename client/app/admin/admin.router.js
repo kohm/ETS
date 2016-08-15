@@ -10,8 +10,7 @@ angular.module('eetApp.admin')
       })
       .state('admin.items', {
         url: '/items',
-        templateUrl: 'app/admin/items/items.html',
-        controllerAs: 'adminItems',
+        template: '<admin-items></admin-items>',
         authenticate: 'admin'
       })
       .state('admin.stats', {

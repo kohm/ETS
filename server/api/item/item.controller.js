@@ -66,6 +66,14 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+// Gets a list of Bands Items
+//TODO fix this shit, finish this method, add a new one to bring one item
+export function getBrands(req, res) {
+  return Item.find().exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Item from the DB
 export function show(req, res) {
   return Item.findById(req.params.id).exec()

@@ -1,0 +1,22 @@
+@import "variables";
+
+//forms
+.form-control, .input-group-addon, .btn {
+  border-radius: 0;
+}
+@include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, 0);
+@include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, 0);
+
+.btn-female {
+  @include button-variant($btn-primary-color, #F64747, #e42c26);
+}
+.btn-male {
+  @include button-variant($btn-primary-color, #1E8BC3, $btn-primary-border);
+}
+
+//navbar
+.navbar-default {
+  background: $navbar-bg-color;
+
+}
+

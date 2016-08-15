@@ -4,9 +4,10 @@
 
   class AdminSuppliersController {
 
-    constructor($scope, $location, $q, Auth, Supplier) {
+    constructor($scope, $location, $q, Auth, ngToast, Supplier) {
       this.$location = $location;
       this.Auth = Auth;
+      this.ngToast = ngToast;
       this.Supplier = Supplier;
       this.supplier = {};
       this.errors = {};
@@ -53,7 +54,10 @@
         this.Supplier.save(newSupplier).$promise
           .then((data) => {
             //clean form
-            //this.users = this.Supplier.query();
+            this.ngToast.success({
+              content: '<p>Proveedor creado! :)</p>',
+              dismissOnClick: true
+            });
             this.errors = {};
             this.reset(form);
           })

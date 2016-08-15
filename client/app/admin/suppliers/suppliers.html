@@ -1,128 +1,130 @@
-<h1>Proveedores y Vendedores</h1>
-<div class="row">
-
-  <form class="form" name="form" ng-submit="adminSuppliers.register(form)" novalidate>
-    <div class="col-md-6 col-lg-3">
-      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminSuppliers.submitted,
+<div class="container-fluid">
+  <h2>Proveedores y Vendedores</h2>
+  <div class="row">
+    <form class="form" name="form" ng-submit="adminSuppliers.register(form)" novalidate>
+      <div class="col-md-6 col-lg-3">
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminSuppliers.submitted,
                                             'has-error': form.name.$invalid && adminSuppliers.submitted }">
-        <label>Nombre Compañia</label>
+          <label>Nombre Compañia</label>
 
-        <input type="text" name="name" class="form-control input-sm" ng-model="adminSuppliers.supplier.name"
-               required/>
-        <p class="help-block" ng-show="form.name.$error.required && adminSuppliers.submitted">
-          El nombre es requerido
-        </p>
-      </div>
+          <input type="text" name="name" class="form-control input-sm" ng-model="adminSuppliers.supplier.name"
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && adminSuppliers.submitted">
+            El nombre es requerido
+          </p>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.legalName.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.legalName.$valid && adminSuppliers.submitted,
                                             'has-error': form.legalName.$invalid && adminSuppliers.submitted }">
-        <label>Razón Social</label>
+          <label>Razón Social</label>
 
-        <input type="text" name="legalName" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.legalName"/>
-      </div>
+          <input type="text" name="legalName" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.legalName"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.taxId.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.taxId.$valid && adminSuppliers.submitted,
                                             'has-error': form.taxId.$invalid && adminSuppliers.submitted }">
-        <label>CUIT/DNI</label>
+          <label>CUIT/DNI</label>
 
-        <input type="text" name="taxId" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.taxId"/>
-      </div>
+          <input type="text" name="taxId" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.taxId"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.contactName.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.contactName.$valid && adminSuppliers.submitted,
                                             'has-error': form.contactName.$invalid && adminSuppliers.submitted }">
-        <label>Nombre Contacto</label>
+          <label>Nombre Contacto</label>
 
-        <input type="text" name="contactName" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.contactName"/>
-      </div>
+          <input type="text" name="contactName" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.contactName"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.email.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && adminSuppliers.submitted,
                                             'has-error': form.email.$invalid && adminSuppliers.submitted }">
-        <label>Email</label>
+          <label>Email</label>
 
-        <input type="email" name="email" class="form-control input-sm" ng-model="adminSuppliers.supplier.email"
-               mongoose-error/>
-        <p class="help-block" ng-show="form.email.$error.email && adminSuppliers.submitted">
-          No parece que sea una dirección de mail válida.
-        </p>
-        <p class="help-block" ng-show="form.email.$error.mongoose">
-          {{ adminSuppliers.errors.email }}
-        </p>
-      </div>
+          <input type="email" name="email" class="form-control input-sm" ng-model="adminSuppliers.supplier.email"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.email.$error.email && adminSuppliers.submitted">
+            No parece que sea una dirección de mail válida.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            {{ adminSuppliers.errors.email }}
+          </p>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && adminSuppliers.submitted,
                                             'has-error': form.phone.$invalid && adminSuppliers.submitted }">
-        <label>Teléfono</label>
+          <label>Teléfono</label>
 
-        <input type="text" name="phone" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.phone"/>
+          <input type="text" name="phone" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.phone"/>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3">
 
-      <div class="form-group" ng-class="{ 'has-success': form.phoneAlt.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.phoneAlt.$valid && adminSuppliers.submitted,
                                             'has-error': form.phoneAlt.$invalid && adminSuppliers.submitted }">
-        <label>Teléfono Alternativo - Celular</label>
+          <label>Teléfono Alternativo - Celular</label>
 
-        <input type="text" name="phoneAlt" class="form-control input-sm" ng-model="adminSuppliers.supplier.phoneAlt"
-               mongoose-error/>
-        <p class="help-block" ng-show="form.phone.$error.mongoose">
-          {{ adminSuppliers.errors.email }}
-        </p>
-      </div>
+          <input type="text" name="phoneAlt" class="form-control input-sm" ng-model="adminSuppliers.supplier.phoneAlt"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.phone.$error.mongoose">
+            {{ adminSuppliers.errors.email }}
+          </p>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.fax.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.fax.$valid && adminSuppliers.submitted,
                                             'has-error': form.fax.$invalid && adminSuppliers.submitted }">
-        <label>Fax</label>
+          <label>Fax</label>
 
-        <input type="text" name="fax" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.fax"/>
-      </div>
+          <input type="text" name="fax" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.fax"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.address.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && adminSuppliers.submitted,
                                             'has-error': form.address.$invalid && adminSuppliers.submitted }">
-        <label>Dirección</label>
+          <label>Dirección</label>
 
-        <input type="text" name="address" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.address"/>
-      </div>
+          <input type="text" name="address" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.address"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.country.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.country.$valid && adminSuppliers.submitted,
                                             'has-error': form.country.$invalid && adminSuppliers.submitted }">
-        <label>Pais</label>
+          <label>Pais</label>
 
-        <input type="text" name="country" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.country"/>
-      </div>
+          <input type="text" name="country" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.country"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.state.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.state.$valid && adminSuppliers.submitted,
                                             'has-error': form.state.$invalid && adminSuppliers.submitted }">
-        <label>Provincia</label>
+          <label>Provincia</label>
 
-        <input type="text" name="state" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.state"/>
-      </div>
+          <input type="text" name="state" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.state"/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-success': form.city.$valid && adminSuppliers.submitted,
+        <div class="form-group" ng-class="{ 'has-success': form.city.$valid && adminSuppliers.submitted,
                                             'has-error': form.city.$invalid && adminSuppliers.submitted }">
-        <label>Ciudad</label>
+          <label>Ciudad</label>
 
-        <input type="text" name="city" class="form-control input-sm"
-               ng-model="adminSuppliers.supplier.city"/>
+          <input type="text" name="city" class="form-control input-sm"
+                 ng-model="adminSuppliers.supplier.city"/>
+        </div>
       </div>
-    </div>
-    <div class="col-md-12">
-      <div>
-        <button class="btn btn-inverse btn-lg btn-register" type="reset" ng-click="adminSuppliers.reset(form)">
-          Reset
-        </button>
-        <button class="btn btn-inverse btn-lg btn-register" type="submit">
-          Crear
-        </button>
+      <div class="col-md-12">
+        <div>
+          <button class="btn btn-inverse btn-lg btn-register" type="reset" ng-click="adminSuppliers.reset(form)">
+            Reset
+          </button>
+          <button class="btn btn-inverse btn-lg btn-register" type="submit">
+            Crear
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
 
+
+  </div>
 </div>

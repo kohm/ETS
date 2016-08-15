@@ -41,13 +41,12 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  github: {},
-  created: {
-    date: {
-      type: Date, default: Date.now
-    }
+  github: {}
+},
+  {
+    timestamps: true
   }
-});
+);
 
 /**
  * Virtuals
