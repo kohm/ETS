@@ -16,6 +16,7 @@ function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
+      console.log(entity);
       res.status(statusCode).json(entity);
     }
   };
@@ -62,6 +63,14 @@ function handleError(res, statusCode) {
 // Gets a list of Items
 export function index(req, res) {
   return Item.find().exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a list of Bands Items
+//TODO fix this shit, finish this method, add a new one to bring one item
+export function brands(req, res) {
+  return Item.find().distinct('brand').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

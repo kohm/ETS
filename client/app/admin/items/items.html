@@ -1,77 +1,159 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="items">
-      <h3>Producto</h3>
-      <a class="btn btn-default" href="#" role="button" ng-click="show_item_form = !show_item_form">Nuevo</a>
-      <a class="btn btn-default" href="#" role="button">Modificar</a>
-      <div class="item-form" ng-show="show_item_form">
-        <form action="">
-          <div class="form-group">
-            <label for="itemName">Nombre</label>
-            <input type="text" class="form-control" id="itemName" placeholder="Nombre">
-          </div>
-          <div class="form-group">
-            <label for="itemCostPrice">Precio de costo</label>
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="itemCostPrice" placeholder="Precio de costo">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="items">
+        <h3>Producto</h3>
+        <div class="controls">
+          <a class="btn btn-sm btn-default" href="#" role="button" ng-click="adminItems.showForm()">Crear</a>
+          <a class="btn btn-sm btn-default" href="#" role="button" ng-click="showSearch = !showSearch">Buscar</a>
+        </div>
+        <div class="item-form" ng-show="adminItems.showProductForm">
+          <form name="form" ng-submit="adminItems.register(form)" novalidate>
+            <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminItems.submitted,
+                                            'has-error': form.name.$invalid && adminItems.submitted }">
+              <label for="name">Nombre</label>
+              <input name="name" type="text" class="form-control input-sm" id="name" placeholder="Nombre"
+                     ng-model="adminItems.item.name" required>
+              <p class="help-block" ng-show="form.name.$error.required && adminItems.submitted">
+                El nombre es requerido
+              </p>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="itemListPrice">Precio de lista</label>
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="itemListPrice" placeholder="Precio de lista">
+
+            <div class="form-group" ng-class="{ 'has-success': form.brand.$valid && adminItems.submitted,
+                                            'has-error': form.brand.$invalid && adminItems.submitted }">
+              <label for="brand">Marca</label>
+              <input type="text" class="form-control input-sm" id="brand" name="brand" placeholder="Marca"
+                     ng-model="adminItems.item.brand" required>
+              <p class="help-block" ng-show="form.brand.$error.required && adminItems.submitted">
+                La marca del producto es requerida
+              </p>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="itemStock">Stock (Total)</label>
-            <input type="text" class="form-control" id="itemStock" placeholder="Stock">
-          </div>
-          <div class="form-group">
-            <label for="itemDepot">Stock (Depósito)</label>
-            <input type="text" class="form-control" id="itemDepot" placeholder="Depósito">
-          </div>
-          <div class="form-group">
-            <label for="itemLocal">Stock (Local)</label>
-            <input type="text" class="form-control" id="itemLocal" placeholder="Local">
-          </div>
-          <div class="form-group">
-            <label for="itemSupplier">Proveedor</label>
-            <input type="text" class="form-control" id="itemSupplier" placeholder="Proveedor">
-          </div>
-          <div class="form-group">
-            <label>Etiquetas</label>
-            <tags-input ng-model="item_tags"></tags-input>
-          </div>
-          <div class="form-group">
-            <label for="itemDescription">Descripción</label>
-              <textarea type="text" class="form-control" id="itemDescription"
-                        placeholder="Agregar descripcion textual del item"></textarea>
-          </div>
-          <button type="submit" class="btn btn-default">Crear</button>
-        </form>
+
+            <div class="form-group btn-group" data-toggle="buttons">
+              <label class="btn btn-female" ng-class="{'active': adminItems.item.gender.female}">
+                <input type="checkbox" name="gender.female" ng-model="adminItems.item.gender.female">Femenino
+              </label>
+              <label class="btn btn-male" ng-class="{'active': adminItems.item.gender.male}">
+                <input type="checkbox" name="gender.male" ng-model="adminItems.item.gender.male">Masculino
+              </label>
+            </div>
+
+            <div class="form-group btn-group" data-toggle="buttons">
+              <label for="itemAge">Edad</label>
+              <div class="input-group"  id="itemAge">
+                <input type="number" name="itemAge" class="form-control input-sm" placeholder="Edad"
+                       ng-model="adminItems.item.age"/>
+                <span class="input-group-addon"><input type="checkbox" style="vertical-align: bottom">Meses</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="itemBarCode">Código de barras</label>
+              <input type="text" name="itemBarCode" class="form-control input-sm" id="itemBarCode" placeholder="Código de barras asociado"
+                     ng-model="adminItems.item.barCode">
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form['price.cost'].$valid && adminItems.submitted,
+                                            'has-error': form['price.cost'].$invalid && adminItems.submitted }">
+              <label for="price.cost">Precio de costo</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" name="price.cost" class="form-control input-sm"
+                       id="price.cost" placeholder="Precio de costo"
+                       ng-pattern="adminItems.minPattern"
+                       ng-model="adminItems.item.price.cost">
+              </div>
+              <p class="help-block" ng-show="form['price.cost'].$invalid && adminItems.submitted">
+                Tiene que ser un número mayor o igual a cero.
+              </p>
+              <p class="help-block" ng-show="form['price.cost'].$error.mongoose">
+                {{ adminItems.errors }}
+              </p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form.price.cost.$valid && adminItems.submitted,
+                                            'has-error': form.price.list.$invalid && adminItems.submitted }">
+              <label for="price.list">Precio de lista</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" name="price.list" class="form-control input-sm" id="price.list" placeholder="Precio de lista"
+                       ng-model="adminItems.item.price.list">
+                <p class="help-block" ng-show="form.price.list.$error.required && adminItems.submitted">
+                  Tiene que ser un número mayor o igual a cero.
+                </p>
+              </div>
+            </div>
+            <!--<div class="form-group">
+              <label for="itemDepot">Stock (Depósito)</label>
+              <input type="text" class="form-control input-sm" id="itemDepot" placeholder="Depósito">
+            </div>
+            <div class="form-group">
+              <label for="itemLocal">Stock (Local)</label>
+              <input type="text" class="form-control input-sm" id="itemLocal" placeholder="Local">
+            </div>
+            <div class="form-group">
+              <label for="itemStock">Stock (Total)</label>
+              <input type="text" class="form-control input-sm" id="itemStock" placeholder="Stock">
+            </div>
+            <div class="form-group">
+              <label for="itemSuppliers">Proveedor</label>
+              <tags-input id="itemSuppliers" ng-model="adminItems.itemSuppliers"
+                          display-property="name"
+                          min-length="1"
+                          placeholder="Agrega uno o mas proveedores">
+                <auto-complete source="adminItems.suppliersTagsText"></auto-complete>
+              </tags-input>
+            </div>-->
+            <div class="form-group" ng-class="{ 'has-success': form.tags.$valid && adminItems.submitted,
+                                            'has-error': form.tags.$invalid && adminItems.submitted }">
+              <label for="tags">Tags Inteligentes</label>
+              <tags-input id="tags" name="tags"
+                          ng-model="adminItems.item.tags"
+                          min-tags="3"
+                          placeholder="Agregá tags: categorías, descripciones, etc..." required></tags-input>
+              <p class="help-block" ng-show="form.tags.$error.required && adminItems.submitted">
+                Los tags son importantes! :P
+              </p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form.description.$valid && adminItems.submitted,
+                                            'has-error': form.description.$invalid && adminItems.submitted }">
+              <label for="description">Descripción</label>
+              <textarea type="text" name="description" class="form-control input-sm" id="description"
+                        placeholder="Agregar descripcion textual del item"
+                        ng-model="adminItems.item.description" required></textarea>
+              <p class="help-block" ng-show="form.description.$error.required && adminItems.submitted">
+                Agregá una descripción del producto, se creativo ;)
+              </p>
+            </div>
+            <button type="submit" class="btn btn-default">Crear</button>
+            <button type="button" class="btn btn-default" ng-click="adminItems.test()">Test</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <div class="purchases">
-      <h3>Comprar</h3>
-      <a class="btn btn-default" href="#" role="button"
-         ng-click="show_purchase_form = !show_purchase_form">Nuevo</a>
-      <a class="btn btn-default" href="#" role="button">Buscar</a>
-      <div class="purchase-form" ng-show="show_purchase_form">
-        <form action="">
-          <div class="form-group">
-            <label for="purchaseName">Nombre</label>
-            <input type="text" class="form-control" id="purchaseName" placeholder="Nombre">
-          </div>
-          <div class="form-group">
-            <label for="purchaseSupplier">Proveedor</label>
-            <input type="text" class="form-control" id="purchaseSupplier" placeholder="Proveedor">
-          </div>
-        </form>
+    <div class="col-md-4">
+      <div class="purchases">
+        <h3>Comprar</h3>
+        <a class="btn btn-default" href="#" role="button"
+           ng-click="show_purchase_form = !show_purchase_form">Nuevo</a>
+        <a class="btn btn-default" href="#" role="button">Buscar</a>
+        <div class="purchase-form" ng-show="show_purchase_form">
+          <form action="">
+            <div class="form-group">
+              <label for="purchaseName">Nombre</label>
+              <input type="text" class="form-control input-sm" id="purchaseName" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="purchaseSupplier">Proveedor</label>
+              <input type="text" class="form-control input-sm" id="purchaseSupplier" placeholder="Proveedor">
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Locales</h3>
     </div>
   </div>
 </div>

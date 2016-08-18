@@ -1,23 +1,32 @@
-@import "../../assets/css/brand_overrides";
 /*.trash { color:rgb(209, 91, 71); }*/
-.trash { color: $brand-danger; }
 .admin-wrapper {
   padding-left: 0;
+  background: $column-bg;
+}
 
-}
 .admin-dashboard {
-  margin-left: 61px;
-  padding-left: 39px;
+  margin-left: 60px;
+  padding-left: 20px;
   padding-top: 20px;
+  background: white;
+  transition: all 200ms ease;
+  .controls {
+    padding-bottom: 10px;
+  }
+  &.wide {
+    margin-left: 160px;
+    transition: all 200ms ease;
+  }
 }
+
 .admin-side-bar {
-  border-right: 1px solid #e7e7e7;
-  box-shadow: 6px 0px 10px -2px #e7e7e7;
+  background: $column-bg;
   height: 100%;
   position: absolute;
-  width: 61px;
+  width: 60px;
+  transition: all 0.2s ease;
   a {
-    border-bottom: 1px solid #DDDDDD;
+    color: $active-presence;
     display: block;
     font-size: 18px;
     height: 60px;
@@ -25,27 +34,79 @@
     text-align: center;
     vertical-align: bottom;
     width: 60px;
+    transition: width 200ms ease;
+
+    &:last-of-type {
+      border-bottom: 1px dotted #DDDDDD;
+      border-top: 1px dotted #DDDDDD;
+    }
+    &:hover {
+      background-color: $hover-item;
+    }
+    &.active {
+      color: $active-item-text;
+      background: $active-item;
+    }
+
+    .text {
+      display: none;
+      transition: all 200ms ease;
+    }
+
   }
-  a:hover {
-    background-color: #f8f8f8;
-    cursor: pointer;
-  }
-  a.active {
-    background-color: #e7e7e7;
+  &.wide {
+    width: 160px;
+    transition: all 200ms ease;
+    a {
+      height: 30px;
+      line-height: 30px;
+      margin: 5px 0;
+      padding-left: 10px;
+      text-align: left;
+      text-decoration: none;
+      width: 160px;
+      &:hover {
+        text-decoration: none;
+        .text {
+          color: $active-item-text;
+        }
+      }
+      &.active {
+        .text {
+          color: $active-item-text;
+          font-style: normal;
+          font-weight: 900;
+        }
+      }
+      i {
+        width: 20px;
+        text-align: center;
+      }
+      .text {
+        color: $hover-item;
+        display: inline;
+        font-size: 14px;
+        font-style: italic;
+        margin-left: 6px;
+        transition: all 200ms ease;
+      }
+    }
   }
 }
 
 .user-list {
-	li {
-		display: flex;
-		border: none;
-		border-bottom: 1px lightgray solid;
-		margin-bottom: 0;
-		&:last-child { border-bottom: none; }
+  li {
+    display: flex;
+    border: none;
+    border-bottom: 1px lightgray solid;
+    margin-bottom: 0;
+    &:last-child {
+      border-bottom: none;
+    }
 
-		.user-info {
-			flex-grow: 1;
-		}
+    .user-info {
+      flex-grow: 1;
+    }
     a:hover {
       cursor: pointer;
     }
@@ -61,5 +122,5 @@
         color: $brand-success;
       }
     }
-	}
+  }
 }

@@ -1,21 +1,28 @@
-<div class="container-fluid admin-wrapper">
-  <div class="admin-side-bar">
+<div class="admin-wrapper">
+  <div class="admin-side-bar" ng-class="{'wide': admin.wideSideBar}">
     <a ui-sref="admin.items" ui-sref-active="active" title="Operaciones">
-      <div class="icon"><i class="fa fa-usd" aria-hidden="true"></i></div>
+      <i class="fa fa-usd" aria-hidden="true"></i>
+      <span class="text">Administración</span>
     </a>
     <a ui-sref="admin.users" ui-sref-active="active" title="Usuarios">
-      <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <span class="text">Usuarios</span>
     </a>
     <a ui-sref="admin.stats" ui-sref-active="active" title="Estadísticas">
-      <div class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+      <i class="fa fa-line-chart" aria-hidden="true"></i>
+      <span class="text">Estadísticas</span>
     </a>
     <a ui-sref="admin.suppliers" ui-sref-active="active" title="Proveedores">
-      <div class="icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+      <i class="fa fa-truck" aria-hidden="true"></i>
+      <span class="text">Proveedores</span>
     </a>
-    <div class="icon"></div>
-    <div class="icon"></div>
+    <a href="" ng-click="admin.wideSideBar = !admin.wideSideBar">
+      <i ng-show="admin.wideSideBar" class="fa fa-th-large" aria-hidden="true"></i>
+      <span ng-show="admin.wideSideBar" class="text">Compacta</span>
+      <i ng-hide="admin.wideSideBar" class="fa fa-th-list" aria-hidden="true"></i>
+    </a>
   </div>
-  <div class="admin-dashboard">
+  <div class="admin-dashboard" ng-class="{'wide': admin.wideSideBar}">
     <div ui-view></div>
   </div>
   <!--<p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>

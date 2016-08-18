@@ -4,10 +4,11 @@
 
   class AdminUsersController {
 
-    constructor($scope, $location, Auth, socket, User) {
+    constructor($scope, $location, Auth, ngToast, socket, User) {
       // Use the User $resource to fetch all users
       this.$location = $location;
       this.Auth = Auth;
+      this.ngToast = ngToast;
       this.socket = socket;
       this.users = User.query();
       this.User = User;
@@ -70,6 +71,10 @@
           .then(() => {
             //clean form
             this.users = this.User.query();
+            this.ngToast.success({
+              content: '<p>Usuario creado! :)</p>',
+              dismissOnClick: true
+            });
             this.user = {};
             this.errors = {};
             form.name = '';

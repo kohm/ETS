@@ -8,6 +8,7 @@
       // Use the User $resource to fetch all users
       this.$location = $location;
       this.users = User.query();
+      this.wideSideBar = false;
       this.$scope = $scope;
     }
 
