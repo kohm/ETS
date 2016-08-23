@@ -9,15 +9,17 @@
       this.Auth = Auth;
       this.supplier = Supplier;
       this.Item = Item;
+      //TODO Find only suppliers names
       this.suppliers = Supplier.query();
       this.ngToast = ngToast;
       this.item = {};
       this.items = [];
       this.minPattern = /^\d+$/;
       this.errors = {};
+      this.savedBrands = [];
       this.showProductForm = false;
       this.socket = socket;
-      this.suppliersTagsText = [];
+      this.availableSuppliers = [];
       this.submitted = false;
       this.suppliersRequired = false;
 
@@ -30,11 +32,14 @@
       this.suppliers.$promise.then((data) => {
         if (data.length > 0) {
           this.suppliersRequired = true;
-          this.suppliersTagsText = data.map(obj => {return { id: obj._id, name: obj.name}});
+          this.availableSuppliers = data.map(obj => {return { _id: obj._id, name: obj.name}});
         }
       });
       this.item.gender = {male: true, female: true};
-      this.socket.syncUpdates('item', this.items);
+      this.savedBrands = this.Item.getBrands();
+      this.socket.syncUpdates('item', this.savedBrands, (event, item, array) => {
+        if (event == 'created') {array[array.length -1] = item.brand}
+      });
     }
 
     showForm() {
@@ -47,7 +52,7 @@
         });
       }
     }
-    //TODO fix this shit
+
     reset(form) {
       this.item = {};
       form.age = '';
@@ -64,18 +69,15 @@
       form.$setUntouched();
     }
     test() {
-      console.log(this.Item.getBrands());
     }
     register(form) {
       this.submitted = true;
-      console.log(form);
-      console.log(form['price.cost']);
 
       if (form.$valid) {
         let newItem = {};
         newItem = this.item;
         if (this.item.tags) {newItem.tags = this.item.tags.map(obj => obj.text)}
-        console.log(newItem);
+        if (this.item.suppliers) {newItem.suppliers = this.item.suppliers.map(obj => obj._id)}
         this.Item.save(newItem).$promise
           .then((data) => {
             this.ngToast.success({
@@ -91,9 +93,7 @@
 
             // Update validity of form fields that match the mongoose errors
             angular.forEach(err.errors, (error, field) => {
-              console.log(field);
-              console.log(form[field]);
-              console.log(form);
+              if (field.includes('suppliers')) {field = 'suppliers'}
               form[field].$setValidity('mongoose', false);
               this.errors[field] = error.message;
             });

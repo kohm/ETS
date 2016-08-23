@@ -6,10 +6,15 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
 @import '../assets/scss/fonts';
 
+//Custom components
+@import '../assets/scss/components/et-panel';
+
 /**
  * App-wide Styles
  */
-
+html, body {
+  height: 100%;
+}
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;

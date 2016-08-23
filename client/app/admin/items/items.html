@@ -1,32 +1,37 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
-      <div class="items">
-        <h3>Producto</h3>
-        <div class="controls">
+      <div class="et-panel">
+        <h3 class="et-heading">Producto</h3>
+        <div class="et-controls">
           <a class="btn btn-sm btn-default" href="#" role="button" ng-click="adminItems.showForm()">Crear</a>
           <a class="btn btn-sm btn-default" href="#" role="button" ng-click="showSearch = !showSearch">Buscar</a>
         </div>
-        <div class="item-form" ng-show="adminItems.showProductForm">
+        <div class="item-form" ng-show="adminItems.showProductForm" autocomplete="off">
           <form name="form" ng-submit="adminItems.register(form)" novalidate>
-            <div class="form-group" ng-class="{ 'has-success': form.name.$valid && adminItems.submitted,
-                                            'has-error': form.name.$invalid && adminItems.submitted }">
-              <label for="name">Nombre</label>
-              <input name="name" type="text" class="form-control input-sm" id="name" placeholder="Nombre"
-                     ng-model="adminItems.item.name" required>
-              <p class="help-block" ng-show="form.name.$error.required && adminItems.submitted">
-                El nombre es requerido
-              </p>
-            </div>
 
-            <div class="form-group" ng-class="{ 'has-success': form.brand.$valid && adminItems.submitted,
+            <div class="row">
+              <div class="col-sm-6 form-group" ng-class="{ 'has-success': form.name.$valid && adminItems.submitted,
+                                            'has-error': form.name.$invalid && adminItems.submitted }">
+                <label for="name">Nombre</label>
+                <input name="name" type="text" class="form-control input-sm" id="name" placeholder="Nombre"
+                       ng-model="adminItems.item.name" required>
+                <p class="help-block" ng-show="form.name.$error.required && adminItems.submitted">
+                  El nombre es requerido
+                </p>
+              </div>
+
+              <div class="col-sm-6 form-group" ng-class="{ 'has-success': form.brand.$valid && adminItems.submitted,
                                             'has-error': form.brand.$invalid && adminItems.submitted }">
-              <label for="brand">Marca</label>
-              <input type="text" class="form-control input-sm" id="brand" name="brand" placeholder="Marca"
-                     ng-model="adminItems.item.brand" required>
-              <p class="help-block" ng-show="form.brand.$error.required && adminItems.submitted">
-                La marca del producto es requerida
-              </p>
+                <label for="brand">Marca</label>
+                <input type="text" class="form-control input-sm" id="brand" name="brand" placeholder="Marca"
+                       uib-typeahead="brand for brand in adminItems.savedBrands | filter:$viewValue | limitTo:8"
+                       ng-model="adminItems.item.brand" autocomplete="off"
+                       required>
+                <p class="help-block" ng-show="form.brand.$error.required && adminItems.submitted">
+                  La marca del producto es requerida
+                </p>
+              </div>
             </div>
 
             <div class="form-group btn-group" data-toggle="buttons">
@@ -40,7 +45,7 @@
 
             <div class="form-group btn-group" data-toggle="buttons">
               <label for="itemAge">Edad</label>
-              <div class="input-group"  id="itemAge">
+              <div class="input-group" id="itemAge">
                 <input type="number" name="itemAge" class="form-control input-sm" placeholder="Edad"
                        ng-model="adminItems.item.age"/>
                 <span class="input-group-addon"><input type="checkbox" style="vertical-align: bottom">Meses</span>
@@ -49,40 +54,58 @@
 
             <div class="form-group">
               <label for="itemBarCode">Código de barras</label>
-              <input type="text" name="itemBarCode" class="form-control input-sm" id="itemBarCode" placeholder="Código de barras asociado"
+              <input type="text" name="itemBarCode" class="form-control input-sm" id="itemBarCode"
+                     placeholder="Código de barras asociado"
                      ng-model="adminItems.item.barCode">
             </div>
 
-            <div class="form-group" ng-class="{ 'has-success': form['price.cost'].$valid && adminItems.submitted,
-                                            'has-error': form['price.cost'].$invalid && adminItems.submitted }">
-              <label for="price.cost">Precio de costo</label>
-              <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="number" name="price.cost" class="form-control input-sm"
-                       id="price.cost" placeholder="Precio de costo"
-                       ng-pattern="adminItems.minPattern"
-                       ng-model="adminItems.item.price.cost">
-              </div>
-              <p class="help-block" ng-show="form['price.cost'].$invalid && adminItems.submitted">
-                Tiene que ser un número mayor o igual a cero.
-              </p>
-              <p class="help-block" ng-show="form['price.cost'].$error.mongoose">
-                {{ adminItems.errors }}
-              </p>
+            <div class="form-group">
+              <label for="productNumber">Número de artículo</label>
+              <input type="text" name="productNumber" class="form-control input-sm" id="productNumber"
+                     placeholder="Número de artículo"
+                     ng-model="adminItems.item.productNumber">
             </div>
 
-            <div class="form-group" ng-class="{ 'has-success': form.price.cost.$valid && adminItems.submitted,
-                                            'has-error': form.price.list.$invalid && adminItems.submitted }">
-              <label for="price.list">Precio de lista</label>
-              <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="number" name="price.list" class="form-control input-sm" id="price.list" placeholder="Precio de lista"
-                       ng-model="adminItems.item.price.list">
-                <p class="help-block" ng-show="form.price.list.$error.required && adminItems.submitted">
+            <div class="row">
+              <div class="col-sm-6 form-group" ng-class="{ 'has-success': form['price.cost'].$valid && adminItems.submitted,
+                                            'has-error': form['price.cost'].$invalid && adminItems.submitted }">
+                <label for="price.cost">Precio de costo</label>
+                <div class="input-group">
+                  <div class="input-group-addon">$</div>
+                  <input type="number" name="price.cost" class="form-control input-sm"
+                         id="price.cost" placeholder="Precio de costo"
+                         ng-pattern="adminItems.minPattern"
+                         ng-model="adminItems.item.price.cost"
+                         mongoose-error>
+                </div>
+                <p class="help-block" ng-show="form['price.cost'].$invalid && adminItems.submitted">
                   Tiene que ser un número mayor o igual a cero.
                 </p>
+                <p class="help-block" ng-show="form['price.cost'].$error.mongoose">
+                  {{ adminItems.errors }}
+                </p>
+              </div>
+
+              <div class="col-sm-6 form-group" ng-class="{ 'has-success': form['price.list'].cost.$valid && adminItems.submitted,
+                                            'has-error': form['price.list'].$invalid && adminItems.submitted }">
+                <label for="price.list">Precio de lista</label>
+                <div class="input-group">
+                  <div class="input-group-addon">$</div>
+                  <input type="number" name="price.list" class="form-control input-sm"
+                         id="price.list" placeholder="Precio de lista"
+                         ng-pattern="adminItems.minPattern"
+                         ng-model="adminItems.item.price.list"
+                         mongoose-error>
+                  <p class="help-block" ng-show="form['price.list'].$invalid && adminItems.submitted">
+                    Tiene que ser un número mayor o igual a cero.
+                  </p>
+                  <p class="help-block" ng-show="form['price.list'].$error.mongoose">
+                    {{ adminItems.errors }}
+                  </p>
+                </div>
               </div>
             </div>
+
             <!--<div class="form-group">
               <label for="itemDepot">Stock (Depósito)</label>
               <input type="text" class="form-control input-sm" id="itemDepot" placeholder="Depósito">
@@ -94,16 +117,26 @@
             <div class="form-group">
               <label for="itemStock">Stock (Total)</label>
               <input type="text" class="form-control input-sm" id="itemStock" placeholder="Stock">
-            </div>
-            <div class="form-group">
-              <label for="itemSuppliers">Proveedor</label>
-              <tags-input id="itemSuppliers" ng-model="adminItems.itemSuppliers"
+            </div>-->
+            <div class="form-group" ng-class="{ 'has-success': form.suppliers.$valid && adminItems.submitted,
+                                            'has-error': form.suppliers.$invalid && adminItems.submitted }">
+              <label for="suppliers">Proveedores</label>
+              <tags-input id="suppliers" name="suppliers" ng-model="adminItems.item.suppliers"
                           display-property="name"
                           min-length="1"
-                          placeholder="Agrega uno o mas proveedores">
-                <auto-complete source="adminItems.suppliersTagsText"></auto-complete>
+                          placeholder="Agrega uno o mas proveedores" required mongoose-error>
+                <auto-complete source="adminItems.availableSuppliers"></auto-complete>
               </tags-input>
-            </div>-->
+              <p class="help-block"
+                 ng-show="form.suppliers.$error.required && adminItems.submitted">
+                Al menos un proveedor es requerido y tiene que ser tomado de la lista.
+              </p>
+              <p class="help-block"
+                 ng-show="form.suppliers.$error.mongoose && adminItems.submitted">
+                mongoose {{ adminItems.errors }}
+              </p>
+            </div>
+
             <div class="form-group" ng-class="{ 'has-success': form.tags.$valid && adminItems.submitted,
                                             'has-error': form.tags.$invalid && adminItems.submitted }">
               <label for="tags">Tags Inteligentes</label>

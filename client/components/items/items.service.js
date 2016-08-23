@@ -13,6 +13,14 @@
           id: 'me',
           controller: 'brands'
         }
+      },
+      smartFind: {
+        method: 'GET',
+        isArray: true,
+        params: {
+          id: 'me',
+          controller: 'smartFind'
+        }
       }
     });
   }

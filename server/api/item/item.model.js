@@ -33,7 +33,7 @@ var ItemSchema = new Schema({
         price: {
           cost: Number
         },
-        providerName: String,
+        supplierName: String,
         sellerName: String,
         storeName: String
       }],
@@ -58,11 +58,13 @@ var ItemSchema = new Schema({
         min: 0
       }
     },
-    providers: String,
+    productNumber: Number,
+    suppliers: [{type: Schema.Types.ObjectId, ref: 'Supplier', required: true}],
     tags: {
       type: [{type: String, lowercase: true, trim: true}],
       required: true
-    },
+    }
+    ,
     stock: [{
       depot: Number,
       local: Number,
@@ -72,6 +74,8 @@ var ItemSchema = new Schema({
   },
   {
     timestamps: true
-  });
+  }
+  )
+  ;
 
 export default mongoose.model('Item', ItemSchema);
