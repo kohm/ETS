@@ -5,7 +5,20 @@ mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
 
 var ItemSchema = new Schema({
-    age: Number,
+    age: {
+      max: {
+        type: Number,
+        default: 100,
+        min: 0,
+        max: 1200
+      },
+      min: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 1200
+      }
+    },
     name: {
       type: String,
       required: true
@@ -75,7 +88,15 @@ var ItemSchema = new Schema({
   {
     timestamps: true
   }
-  )
-  ;
+);
+ItemSchema
+  .pre('save', function(next) {
+    console.log(this);
+    if (this.age.min > this.age.max) {
+      return next(new Error('Las edades mínima y máxima no concuerdan'));
+    } else {
+      return next();
+    }
+  });
 
 export default mongoose.model('Item', ItemSchema);

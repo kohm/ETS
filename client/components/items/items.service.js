@@ -14,6 +14,21 @@
           controller: 'brands'
         }
       },
+      findOne: {
+        method: 'GET',
+        params: {
+          id: 'me',
+          controller: 'findOne'
+        }
+      },
+      typeAhead: {
+        method: 'GET',
+        isArray: true,
+        params: {
+          id: 'me',
+          controller: 'typeAhead'
+        }
+      },
       smartFind: {
         method: 'GET',
         isArray: true,

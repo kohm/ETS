@@ -6,8 +6,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
 @import '../assets/scss/fonts';
 
-//Custom components
-@import '../assets/scss/components/et-panel';
 
 /**
  * App-wide Styles
@@ -32,8 +30,10 @@ body {
 @import 'admin/admin.scss';
 @import 'admin/stats/stats.scss';
 @import 'main/main.scss';
+@import '../components/et-panel/et-panel.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
 @import '../components/navbar/navbar.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
+@import '../components/smart-search/smart-search.scss';
 /* endinject */

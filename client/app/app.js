@@ -4,6 +4,7 @@ angular.module('eetApp', [
   'eetApp.auth',
   'eetApp.admin',
   'eetApp.constants',
+  'angularSpinner',
   'ngAnimate',
   'ngCookies',
   'ngResource',
@@ -15,7 +16,19 @@ angular.module('eetApp', [
   'ui.bootstrap',
   'validation.match'
 ])
-  .config(['ngToastProvider', '$urlRouterProvider', '$locationProvider', function(ngToast, $urlRouterProvider, $locationProvider) {
+  .config(['ngToastProvider', 'usSpinnerConfigProvider', '$urlRouterProvider', '$locationProvider', function(ngToast, usSpinnerConfigProvider, $urlRouterProvider, $locationProvider) {
+    usSpinnerConfigProvider.setDefaults({
+      lines: 7,
+
+      corners: 1,
+      color: '#245b61',
+      opacity: 0.15,
+      direction: 1,
+      speed: 1,
+      trail: 20,
+      width: 5,
+      zIndex: 2e9
+    });
     ngToast.configure({
       verticalPosition: 'bottom',
       horizontalPosition: 'center',

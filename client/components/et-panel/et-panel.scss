@@ -1,0 +1,40 @@
+$et-panel-bg: #F3F3F4;
+$et-header-bg: #728A8E;
+$et-border-config: 1px solid #ccc;
+
+.et-panel {
+
+  .et-header {
+    background: $et-header-bg;
+    height: 34px;
+    padding: 0 5px;
+    .et-heading {
+      display: inline-block;
+      color: white;
+      float: left;
+      font-size: 14px;
+      line-height: 34px;
+      margin: 0;
+    }
+
+    .et-controls {
+      display: inline-block;
+      float: right;
+      height: 34px;
+      line-height: 34px;
+      a {
+        color: white;
+        display: inline-block;
+        text-align: center;
+        width: 20px;
+      }
+    }
+  }
+  .et-body {
+    border-bottom: $et-border-config;
+    border-left: $et-border-config;
+    border-right: $et-border-config;
+    min-height: 170px;
+    padding: 10px;
+  }
+}

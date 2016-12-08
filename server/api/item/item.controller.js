@@ -14,7 +14,7 @@ import Item from './item.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
-  return function(entity) {
+  return function (entity) {
     if (entity) {
       console.log(entity);
       res.status(statusCode).json(entity);
@@ -23,7 +23,7 @@ function respondWithResult(res, statusCode) {
 }
 
 function saveUpdates(updates) {
-  return function(entity) {
+  return function (entity) {
     var updated = _.merge(entity, updates);
     return updated.save()
       .then(updated => {
@@ -33,7 +33,7 @@ function saveUpdates(updates) {
 }
 
 function removeEntity(res) {
-  return function(entity) {
+  return function (entity) {
     if (entity) {
       return entity.remove()
         .then(() => {
@@ -44,7 +44,7 @@ function removeEntity(res) {
 }
 
 function handleEntityNotFound(res) {
-  return function(entity) {
+  return function (entity) {
     if (!entity) {
       res.status(404).end();
       return null;
@@ -55,7 +55,8 @@ function handleEntityNotFound(res) {
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
-  return function(err) {
+  console.log(res);
+  return function (err) {
     res.status(statusCode).send(err);
   };
 }
@@ -68,9 +69,35 @@ export function index(req, res) {
 }
 
 // Gets a list of Bands Items
-//TODO fix this shit, finish this method, add a new one to bring one item
 export function brands(req, res) {
   return Item.find().distinct('brand').exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a info to fulfill typeAhead
+// TODO Validation if tags is not exist or brand
+export function typeAhead(req, res) {
+  var typeAhead = [];
+  return Item.find().distinct('tags').exec()
+    .then((res)=> {
+      typeAhead = res;
+      return Item.find().distinct('brand').exec()
+        .then((res) => {
+          typeAhead.concat(res);
+          return Item.find().distinct('name').exec().
+            then((res) => {
+              return typeAhead.concat(res);
+          });
+        })
+    })
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a single Item from the DB
+export function findOne(req, res) {
+  return Item.findOne().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

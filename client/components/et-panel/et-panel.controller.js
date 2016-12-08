@@ -2,7 +2,7 @@
 
 (function () {
 
-  class AdminController {
+  class EtPanel {
 
     constructor($scope, $location, User) {
       // Use the User $resource to fetch all users
@@ -18,10 +18,10 @@
     }
   }
 
-  angular.module('eetApp.admin')
-    .component('admin', {
-      templateUrl: 'app/admin/admin.html',
-      controller: AdminController
+  angular.module('eetApp')
+    .component('etPanel', {
+      templateUrl: 'et-panel.html',
+      controller: EtPanel
     })
 
 })();
