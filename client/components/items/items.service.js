@@ -3,7 +3,7 @@
 (function() {
 
   function ItemResource($resource) {
-    return $resource('/api/items/:id/:controller', {
+    return $resource('/api/items/:id/:string/:controller', {
       id: '@_id'
     }, {
       getBrands: {
@@ -34,6 +34,7 @@
         isArray: true,
         params: {
           id: 'me',
+          string: '@string',
           controller: 'smartFind'
         }
       }

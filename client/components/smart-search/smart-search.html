@@ -1,28 +1,20 @@
 <div class="input-group">
-  <input type="text" class="form-control input-sm" placeholder="Buscar todo">
+  <input type="text" class="form-control input-sm" placeholder="Buscar todo"
+         ng-model="$ctrl.strSearch" ng-change="$ctrl.search($ctrl.strSearch)" ng-model-options="{debounce: 1000}">
   <span class="input-group-btn">
     <button class="btn btn-default btn-sm" type="button">Buscar</button>
   </span>
 </div>
-<table class="table table-condensed table-striped table-hover">
+<span us-spinner ng-show="$ctrl.searchingEvent"></span>
+<table class="table table-condensed table-striped table-hover" ng-hide="$ctrl.searchingEvent" style="">
   <tr>
     <th>Nombre</th>
     <th>Descripcion</th>
     <th>Controles</th>
   </tr>
-  <tr>
-    <td>Spiderman</td>
-    <td>Muñeco spiderman grande</td>
-    <td><a href="#">Editar</a></td>
-  </tr>
-  <tr>
-    <td>Ironman</td>
-    <td>Rompe cabezas Ironman 50 piezas</td>
-    <td><a href="#">Editar</a></td>
-  </tr>
-  <tr>
-    <td>Capitan Philips la odisea del mundo mundial</td>
-    <td>Rompe cabezas Ironman 50 piezas</td>
-    <td><a href="#">Editar</a></td>
+  <tr ng-repeat="item in $ctrl.items">
+    <td>{{item.name}}</td>
+    <td>{{item.tags}}</td>
+    <td><a href="item/{{item.id}}">Editar</a></td>
   </tr>
 </table>

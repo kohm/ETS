@@ -17,8 +17,11 @@
         <div class="et-body">
           <span us-spinner ng-hide="$ctrl.showProductSearch || $ctrl.showProductForm"></span>
           <div class="search-bar" ng-show="$ctrl.showProductSearch">
-
-            <smart-search></smart-search>
+            <div class="row">
+              <div class="col-md-12">
+                <smart-search></smart-search>
+              </div>
+            </div>
 
           </div>
           <div class="item-form" ng-show="$ctrl.showProductForm" autocomplete="off">

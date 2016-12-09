@@ -92,6 +92,7 @@ var ItemSchema = new Schema({
 ItemSchema
   .pre('save', function(next) {
     console.log(this);
+    this.name = this.name.charAt(0).toUpperCase() + this.name.slice(1);
     if (this.age.min > this.age.max) {
       return next(new Error('Las edades mínima y máxima no concuerdan'));
     } else {

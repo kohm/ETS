@@ -16,7 +16,6 @@ function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function (entity) {
     if (entity) {
-      console.log(entity);
       res.status(statusCode).json(entity);
     }
   };
@@ -55,7 +54,6 @@ function handleEntityNotFound(res) {
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
-  console.log(res);
   return function (err) {
     res.status(statusCode).send(err);
   };
@@ -115,6 +113,21 @@ export function create(req, res) {
   return Item.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+}
+
+// Performs a smart search
+export function smartFind(req, res) {
+  console.log(req.params);
+  //return Item.find({name: new RegExp('^'+ req.params.string +'$', "i")}).exec()
+  return Item.find({
+    '$or': [
+      {"name": { "$regex": req.params.string, "$options": "i" } },
+      {"tags": { "$regex": req.params.string, "$options": "i" } }
+    ]}).sort([['name', 1]]).limit(20).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+
 }
 
 // Updates an existing Item in the DB

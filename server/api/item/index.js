@@ -11,6 +11,7 @@ router.get('/:id', controller.show);
 router.get('/:id/brands', controller.brands);
 router.get('/:id/findOne', controller.findOne);
 router.get('/:id/typeAhead', controller.typeAhead);
+router.get('/:id/:string/smartFind', controller.smartFind);
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
