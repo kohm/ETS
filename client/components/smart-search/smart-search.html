@@ -17,6 +17,6 @@
     <td class="col-md-3">{{item.name}}</td>
     <td class="col-md-3">{{item.tags}}</td>
     <td class="col-md-3">{{item.suppliers}}</td>
-    <td class="col-md-3"><a ng-href="item/{{item._id}}">Editar</a></td>
+    <td class="col-md-3"><a ui-sref="admin.items({id: item._id})">Editar</a></td>
   </tr>
 </table>

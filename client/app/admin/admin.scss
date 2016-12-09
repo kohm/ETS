@@ -34,10 +34,6 @@
     width: 60px;
     transition: width 200ms ease;
 
-    &:last-of-type {
-      border-bottom: 1px dotted #DDDDDD;
-      border-top: 1px dotted #DDDDDD;
-    }
     &:hover {
       background-color: $hover-item;
     }

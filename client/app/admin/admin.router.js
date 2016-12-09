@@ -9,8 +9,14 @@ angular.module('eetApp.admin')
         authenticate: 'admin'
       })
       .state('admin.items', {
-        url: '/items',
-        template: '<admin-items></admin-items>',
+        url: '/items/:id',
+        template: function (stateProvider) {
+          if (stateProvider.id) {
+            return '<item-editor></item-editor>';
+          } else {
+            return '<admin-items></admin-items>';
+          }
+        },
         authenticate: 'admin'
       })
       .state('admin.stats', {
