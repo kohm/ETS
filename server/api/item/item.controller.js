@@ -122,7 +122,10 @@ export function smartFind(req, res) {
   return Item.find({
     '$or': [
       {"name": { "$regex": req.params.string, "$options": "i" } },
-      {"tags": { "$regex": req.params.string, "$options": "i" } }
+      {"tags": { "$regex": req.params.string, "$options": "i" } },
+      {"brand": { "$regex": req.params.string, "$options": "i" } },
+      {"productNumber": { "$regex": req.params.string, "$options": "i" } },
+      {"barCode": { "$regex": req.params.string, "$options": "i" } }
     ]}).sort([['name', 1]]).limit(20).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

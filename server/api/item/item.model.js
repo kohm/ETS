@@ -71,7 +71,7 @@ var ItemSchema = new Schema({
         min: 0
       }
     },
-    productNumber: Number,
+    productNumber: String,
     suppliers: [{type: Schema.Types.ObjectId, ref: 'Supplier', required: true}],
     tags: {
       type: [{type: String, lowercase: true, trim: true}],

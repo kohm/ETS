@@ -8,13 +8,15 @@
 <span us-spinner ng-show="$ctrl.searchingEvent"></span>
 <table class="table table-condensed table-striped table-hover" ng-hide="$ctrl.searchingEvent" style="">
   <tr>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th>Controles</th>
+    <th class="col-md-3">Nombre</th>
+    <th class="col-md-3">Descripcion</th>
+    <th class="col-md-3">Proveedor</th>
+    <th class="col-md-3">Controles</th>
   </tr>
   <tr ng-repeat="item in $ctrl.items">
-    <td>{{item.name}}</td>
-    <td>{{item.tags}}</td>
-    <td><a href="item/{{item.id}}">Editar</a></td>
+    <td class="col-md-3">{{item.name}}</td>
+    <td class="col-md-3">{{item.tags}}</td>
+    <td class="col-md-3">{{item.suppliers}}</td>
+    <td class="col-md-3"><a ng-href="item/{{item._id}}">Editar</a></td>
   </tr>
 </table>
