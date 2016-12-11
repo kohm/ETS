@@ -4,17 +4,27 @@
 
   class ItemEditor {
 
-    constructor($location, $scope, $timeout, Item) {
+    constructor($location, $q, $scope, $timeout, Item, $state, $stateParams) {
       // Use the User $resource to fetch all users
-      this.$location = $location;
-      this.$timeout = $timeout;
-      this.$scope = $scope;
+      this.$state = $state;
+      this.$stateParams = $stateParams;
       this.Item = Item;
-      this.items = [];
-      this.searchingEvent = false;
-      this.strSearch = '';
     }
+
+    $onInit() {
+      console.log(this.$stateParams);
+      this.Item.get({id: this.$stateParams.id}).$promise
+        .then((data) => {
+          this.item = data;
+        })
+        .catch((er) => {
+          console.log(er);
+          this.$state.go('^');
+        })
+    }
+
   }
+
   angular.module('eetApp')
     .component('itemEditor', {
       templateUrl: 'app/admin/items/item-editor/item-editor.html',

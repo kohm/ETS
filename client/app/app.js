@@ -4,6 +4,7 @@ angular.module('eetApp', [
   'eetApp.auth',
   'eetApp.admin',
   'eetApp.constants',
+  'eetApp.catalogue',
   'angularSpinner',
   'ngAnimate',
   'ngCookies',
