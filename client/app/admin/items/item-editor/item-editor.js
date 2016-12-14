@@ -9,6 +9,8 @@
       this.$state = $state;
       this.$stateParams = $stateParams;
       this.Item = Item;
+      this.oneWayD = 'one wayyy';
+      this.twoWayD = 'twoWAYYYY222'
     }
 
     $onInit() {

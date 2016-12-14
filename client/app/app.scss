@@ -28,10 +28,12 @@ body {
 // Component styles are injected through grunt
 /* inject:scss */
 @import 'admin/admin.scss';
+@import 'admin/items/item-editor/item-editor.scss';
 @import 'admin/stats/stats.scss';
 @import 'catalogue/catalogue.scss';
 @import 'catalogue/item/catalogue.item.scss';
 @import 'main/main.scss';
+@import '../components/carousel/carousel.scss';
 @import '../components/et-panel/et-panel.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';

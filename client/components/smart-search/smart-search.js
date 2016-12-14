@@ -11,8 +11,21 @@
       this.$scope = $scope;
       this.Item = Item;
       this.items = [];
+      this.itemsFound = false;
       this.searchingEvent = false;
       this.strSearch = '';
+    }
+
+    $onInit() {
+      //make sure that the item exists
+      this.Item.findOne().$promise
+        .then((data) => {
+          console.log(data);
+          this.itemsFound = true;
+        })
+        .catch((err) => {
+          this.itemsFound = false;
+        });
     }
 
     search(strSearch) {
@@ -21,7 +34,7 @@
         console.log(this.items);
         this.searchingEvent = false;
       } else {
-        
+
       }
     }
   }

@@ -60,7 +60,7 @@ var ItemSchema = new Schema({
         storeName: String
       }]
     }],
-    photo: String,
+    photo: [String],
     price: {
       cost: {
         type: Number,

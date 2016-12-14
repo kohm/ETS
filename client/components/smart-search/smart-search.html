@@ -6,7 +6,8 @@
   </span>
 </div>
 <span us-spinner ng-show="$ctrl.searchingEvent"></span>
-<table class="table table-condensed table-striped table-hover" ng-hide="$ctrl.searchingEvent" style="">
+<p ng-hide="$ctrl.itemsFound">No se encontraron Items</p>
+<table class="table table-condensed table-striped table-hover" ng-show="$ctrl.itemsFound" style="">
   <tr>
     <th class="col-md-3">Nombre</th>
     <th class="col-md-3">Descripcion</th>
@@ -17,6 +18,6 @@
     <td class="col-md-3"><a ui-sref="catalogue({id: item._id})">{{item.name}}</a></td>
     <td class="col-md-3">{{item.tags}}</td>
     <td class="col-md-3">{{item.suppliers}}</td>
-    <td class="col-md-3"><a ui-sref="admin.items({id: item._id})">Editar</a></td>
+    <td class="col-md-3"><a ui-sref="admin.items({id: item._id})">Configurar</a></td>
   </tr>
 </table>
