@@ -30,3 +30,12 @@ Run `grunt build` for building and `grunt serve` for preview.
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
+
+## Users
+
+# Admin user: admin@example.com
+# Admin password: admin
+
+# Testing user: test@example.com
+# Testing user: test
+
