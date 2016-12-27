@@ -33,9 +33,9 @@ Running `npm test` will run the unit tests with karma.
 
 ## Users
 
-# Admin user: admin@example.com
-# Admin password: admin
+ Admin user: admin@example.com
+ Admin password: admin
 
-# Testing user: test@example.com
-# Testing user: test
+ Testing user: test@example.com
+ Testing user: test
 
