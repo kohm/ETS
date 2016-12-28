@@ -14,7 +14,6 @@
     }
 
     $onInit() {
-      console.log(this.$stateParams);
       this.Item.get({id: this.$stateParams.id}).$promise
         .then((data) => {
           this.item = data;

@@ -10,7 +10,8 @@ angular.module('eetApp.admin')
       })
       .state('admin.items', {
         url: '/items/:id',
-        template: function (stateProvider) {
+        template: (stateProvider) => {
+          console.log(stateProvider);
           if (stateProvider.id) {
             return '<item-editor></item-editor>';
           } else {
