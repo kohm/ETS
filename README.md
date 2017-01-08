@@ -39,3 +39,12 @@ Running `npm test` will run the unit tests with karma.
  Testing user: test@example.com
  Testing user: test
 
+
+##Known issues
+· Something with ui-router
+1. admin
+2. administration
+3. search an item
+4. "Configure" go to item editor
+6. Try to click in Administration again
+

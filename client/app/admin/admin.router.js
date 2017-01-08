@@ -13,8 +13,10 @@ angular.module('eetApp.admin')
         template: (stateProvider) => {
           console.log(stateProvider);
           if (stateProvider.id) {
+            console.log('true');
             return '<item-editor></item-editor>';
           } else {
+            console.log('false');
             return '<admin-items></admin-items>';
           }
         },

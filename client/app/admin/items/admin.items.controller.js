@@ -35,10 +35,11 @@
 
     $onInit() {
       //Existing item control
-      this.Item.findOne().$promise.then(() => {
-        this.existItem = true;
-        this.typeAhead = this.Item.typeAhead();
-      });
+      this.Item.findOne().$promise
+        .then(() => {
+          this.existItem = true;
+          this.typeAhead = this.Item.typeAhead();
+        });
       //Existing suppliers control
       this.suppliers.$promise.then((data) => {
         if (data.length > 0) {
