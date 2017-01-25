@@ -1,7 +1,7 @@
 'use strict';
 
 (() => {
-  class CarouselController {
+  class GalleryController {
     constructor($scope) {
       this.$scope = $scope;
     }
@@ -11,13 +11,13 @@
     }
   }
   angular.module('eetApp')
-    .component('carousel', {
-      controller: CarouselController,
+    .component('gallery', {
+      controller: GalleryController,
       bindings: {
         twoWay: '=',
         editorMode: '<',
         oneWay: '<'
       },
-      templateUrl: 'components/carousel/carousel.html'
+      templateUrl: 'components/gallery/gallery.html'
     });
 })();

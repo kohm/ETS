@@ -71,12 +71,13 @@
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
+      <script src="components/auth/auth.module.js"></script>
       <script src="app/admin/admin.module.js"></script>
       <script src="app/catalogue/catalogue.module.js"></script>
-      <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="components/auth/auth.service.js"></script>
-      <script src="app/account/account.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/Dummy/dummy.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/admin/items/admin.items.controller.js"></script>
       <script src="app/admin/items/item-editor/item-editor.js"></script>
@@ -84,19 +85,19 @@
       <script src="app/admin/users/admin.users.controller.js"></script>
       <script src="app/app.constant.js"></script>
       <script src="app/catalogue/catalogue.js"></script>
-      <script src="app/account/settings/settings.controller.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
       <script src="app/catalogue/catalogue.router.js"></script>
       <script src="app/catalogue/item/catalgoue.item.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
-      <script src="app/account/signup/signup.controller.js"></script>
-      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/account.js"></script>
+      <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
       <script src="components/auth/user.service.js"></script>
-      <script src="components/carousel/carousel.js"></script>
       <script src="components/et-panel/et-panel.controller.js"></script>
       <script src="components/footer/footer.directive.js"></script>
+      <script src="components/gallery/gallery.js"></script>
       <script src="components/items/items.service.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
@@ -107,7 +108,7 @@
       <script src="components/smart-search/smart-search.js"></script>
       <script src="components/socket/socket.service.js"></script>
       <script src="components/suppliers/suppliers.service.js"></script>
-      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
