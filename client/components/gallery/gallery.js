@@ -15,6 +15,7 @@
       controller: GalleryController,
       bindings: {
         twoWay: '=',
+        photo: '=',
         editorMode: '<',
         oneWay: '<'
       },

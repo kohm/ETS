@@ -28,6 +28,7 @@ module.exports = function(config) {
       'client/bower_components/angular-animate/angular-animate.js',
       'client/bower_components/spin.js/spin.js',
       'client/bower_components/angular-spinner/angular-spinner.js',
+      'client/bower_components/angular-xeditable/dist/js/xeditable.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

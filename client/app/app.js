@@ -15,7 +15,8 @@ angular.module('eetApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'xeditable'
 ])
   .config(['ngToastProvider', 'usSpinnerConfigProvider', '$urlRouterProvider', '$locationProvider', function(ngToast, usSpinnerConfigProvider, $urlRouterProvider, $locationProvider) {
     usSpinnerConfigProvider.setDefaults({
