@@ -10,9 +10,9 @@
   padding-top: 20px;
   background: white;
   transition: all 200ms ease;
-  min-height: 1600px;
+  min-height: 256px;
   &.wide {
-    margin-left: 160px;
+    margin-left: 256px;
     transition: all 200ms ease;
   }
 }
@@ -23,6 +23,7 @@
   position: absolute;
   width: 60px;
   transition: all 0.2s ease;
+  padding: 20px 24px;
   a {
     color: $active-presence;
     display: block;
@@ -34,14 +35,6 @@
     width: 60px;
     transition: width 200ms ease;
 
-    &:hover {
-      background-color: $hover-item;
-    }
-    &.active {
-      color: $active-item-text;
-      background: $active-item;
-    }
-
     .text {
       display: none;
       transition: all 200ms ease;
@@ -49,39 +42,40 @@
 
   }
   &.wide {
-    width: 160px;
+    width: 256px;
     transition: all 200ms ease;
     a {
-      height: 30px;
-      line-height: 30px;
+      height: 32px;
+      line-height: 32px;
       margin: 5px 0;
-      padding-left: 10px;
       text-align: left;
       text-decoration: none;
-      width: 160px;
+      width: 100%;
+
       &:hover {
-        text-decoration: none;
         .text {
           color: $active-item-text;
+          text-decoration: underline;
         }
       }
+
       &.active {
         .text {
-          color: $active-item-text;
-          font-style: normal;
-          font-weight: 900;
+          text-decoration: underline;
         }
       }
+
       i {
         width: 20px;
         text-align: center;
       }
+
       .text {
-        color: $hover-item;
+        color: $text-color;
         display: inline;
-        font-size: 14px;
-        font-style: italic;
-        margin-left: 6px;
+        font-size: 16px;
+        margin-left: 12px;
+        font-weight: 700;
         transition: all 200ms ease;
       }
     }

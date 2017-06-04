@@ -4,7 +4,7 @@
 
   class ItemEditor {
 
-    constructor($location, $q, $scope, $timeout, Item, $state, $stateParams) {
+    constructor($location, $q, $scope, $timeout, Item, Supplier, $state, $stateParams) {
       // Use the User $resource to fetch all users
       this.$state = $state;
       this.icons = ["ts_icon_star_o",
@@ -400,8 +400,12 @@
         "ts_icon_pocket_casts",
         "ts_icon_file_generic",
         "ts_icon_file_generic_small"];
+      this.availableBrands = [];
+      this.availableSuppliers = [];
+      this.Supplier = Supplier;
       this.$stateParams = $stateParams;
       this.Item = Item;
+      this.item = {};
       this.oneWayD = 'one wayyy';
       this.twoWayD = 'twoWAYYYY222'
     }
@@ -414,7 +418,15 @@
         .catch((er) => {
           console.log(er);
           this.$state.go('^');
-        })
+        });
+      this.availableBrands = this.Item.getBrands();
+      console.log(this.availableBrands);
+      this.Supplier.query().$promise
+        .then((data) => {
+          this.availableSuppliers = data.map((obj) => {
+            return {_id: obj._id, name: obj.name}
+          });
+        });
     }
 
   }

@@ -33,6 +33,9 @@
       });
     }
 
+    //View manager
+    //use location service to switch views inside panels
+
     $onInit() {
       //Existing item control
       this.Item.findOne().$promise
@@ -116,9 +119,6 @@
             this.item.age.min = this.item.age.min * 12;
             this.item.age.max = this.item.age.max * 12;
           }
-        } else {
-          this.item.age.min = 0;
-          this.item.age.max = 0;
         }
 
         newItem = Object.assign({}, this.item);

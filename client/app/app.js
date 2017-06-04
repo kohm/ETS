@@ -18,10 +18,10 @@ angular.module('eetApp', [
   'validation.match',
   'xeditable'
 ])
-  .config(['ngToastProvider', 'usSpinnerConfigProvider', '$urlRouterProvider', '$locationProvider', function(ngToast, usSpinnerConfigProvider, $urlRouterProvider, $locationProvider) {
+  .config(['ngToastProvider', 'usSpinnerConfigProvider', '$urlRouterProvider', '$locationProvider',
+    function(ngToast, usSpinnerConfigProvider, $urlRouterProvider, $locationProvider) {
     usSpinnerConfigProvider.setDefaults({
       lines: 7,
-
       corners: 1,
       color: '#245b61',
       opacity: 0.15,
@@ -41,4 +41,7 @@ angular.module('eetApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+  }])
+  .run(['editableOptions', function(editableOptions) {
+    editableOptions.theme = 'bs3';
   }]);

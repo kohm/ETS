@@ -151,6 +151,7 @@
                 <tags-input id="suppliers" name="suppliers" ng-model="$ctrl.item.suppliers"
                             display-property="name"
                             min-length="1"
+                            add-from-autocomplete-only="true"
                             placeholder="Agrega uno o mas proveedores" required mongoose-error>
                   <auto-complete source="$ctrl.availableSuppliers"></auto-complete>
                 </tags-input>
@@ -166,13 +167,13 @@
 
               <div class="form-group" ng-class="{ 'has-success': form.tags.$valid && $ctrl.submitted,
                                             'has-error': form.tags.$invalid && $ctrl.submitted }">
-                <label for="tags">Tags Inteligentes</label>
+                <label for="tags">Etiquetas</label>
                 <tags-input id="tags" name="tags"
                             ng-model="$ctrl.item.tags"
                             min-tags="3"
                             placeholder="Agregá tags: categorías, descripciones, etc..." required></tags-input>
                 <p class="help-block" ng-show="form.tags.$error.required && $ctrl.submitted">
-                  Los tags son importantes! :P
+                  Las Etiquetas son importantes! :P
                 </p>
               </div>
 

@@ -102,7 +102,9 @@ export function findOne(req, res) {
 
 // Gets a single Item from the DB
 export function show(req, res) {
-  return Item.findById(req.params.id).exec()
+  return Item.findById(req.params.id)
+    .populate('suppliers', 'name')
+    .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
