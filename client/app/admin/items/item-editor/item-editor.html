@@ -20,16 +20,51 @@
             </a>
           </h1>
           <p>Marca:
-            <span editable-text="$ctrl.item.brand" e-form="itemBrand" e-uib-typeahead="brand for brand in $ctrl.availableBrands | filter:$viewValue | limitTo:8">
+            <span editable-text="$ctrl.item.brand" e-form="itemBrand"
+                  e-uib-typeahead="brand for brand in $ctrl.availableBrands | filter:$viewValue | limitTo:8">
               {{ $ctrl.item.brand || "No configurado" }}
             </span>
             <a href="#" ng-click="itemBrand.$show()" ng-hide="itemBrand.$visible">
               <i class="ts_icon ts_icon_pencil"></i>
             </a>
           </p>
+
+          <div class="form-group btn-group" data-toggle="buttons">
+            <label class="btn btn-female" ng-class="{'active': $ctrl.item.gender.female}">
+              <input type="checkbox" name="gender.female" ng-model="$ctrl.item.gender.female">Femenino
+            </label>
+            <label class="btn btn-male" ng-class="{'active': $ctrl.item.gender.male}">
+              <input type="checkbox" name="gender.male" ng-model="$ctrl.item.gender.male">Masculino
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-4 form-group btn-group" data-toggle="buttons"
+                 ng-class="{'has-success': form.minAge.$valid && $ctrl.form.submitted,
+                      'has-error': form.minAge.$invalid && $ctrl.form.submitted}">
+              <label for="minAge">Edad Desde</label>
+              <div class="input-group" id="minAge">
+                <input name="minAge" class="form-control input-sm" placeholder="Dese"
+                       min="0" ng-pattern="$ctrl.onlyNum" ng-model="$ctrl.item.age.min"/>
+                <span class="input-group-addon"><input type="checkbox" ng-model="$ctrl.item.age.minIsMonth"
+                                                       style="vertical-align: bottom">Meses</span>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 form-group btn-group" data-toggle="buttons"
+                 ng-class="{'has-success': form.maxAge.$valid && $ctrl.form.submitted,
+                      'has-error': form.maxAge.$invalid && $ctrl.form.submitted}">
+              <label for="maxAge">Hasta</label>
+              <div class="input-group" id="maxAge">
+                <input type="number" name="maxAge" class="form-control input-sm" placeholder="Hasta"
+                       min="0" ng-pattern="$ctrl.onlyNum" ng-model="$ctrl.item.age.max"/>
+                <span class="input-group-addon"><input type="checkbox" ng-model="$ctrl.item.age.maxIsMonth"
+                                                       style="vertical-align: bottom">Meses</span>
+              </div>
+            </div>
+          </div>
           <p>Precio de costo:
             <span editable-text="$ctrl.item.price.cost" e-form="priceCost">
-              $ {{ $ctrl.item.price.cost || "No configurado" }}
+              <i class="fa fa-usd" aria-hidden="true"></i> {{ $ctrl.item.price.cost || "No configurado" }}
             </span>
             <a href="#" ng-click="priceCost.$show()" ng-hide="priceCost.$visible">
               <i class="ts_icon ts_icon_pencil"></i>
@@ -37,7 +72,7 @@
           </p>
           <p>Precio de lsita:
             <span href="#" editable-text="$ctrl.item.price.list" e-form="priceList">
-              $ {{ $ctrl.item.price.list || "No configurado" }}
+              <i class="fa fa-usd" aria-hidden="true"></i> {{ $ctrl.item.price.list || "No configurado" }}
             </span>
             <a href="#" ng-click="priceList.$show()" ng-hide="priceList.$visible">
               <i class="ts_icon ts_icon_pencil"></i>
@@ -53,68 +88,38 @@
           </p>
 
           <p>Proveedores:</p>
-          <form data-editable-form name="xeditableNgTagsSuppliers">
 
-            <div>
-              <span ng-repeat="supplier in $ctrl.item.suppliers"><b>{{supplier.name}} </b></span>
-            </div>
+          <div>
+            <span ng-repeat="supplier in $ctrl.item.suppliers"><b>{{supplier.name}} </b></span>
+          </div>
 
-            <div editable-tags-input="$ctrl.item.suppliers" data-e-form="xeditableNgTagsSuppliers"
-                 data-e-name="tags" name="tags" id="suppliers"
-                 data-e-display-property="name"
-                 data-e-add-from-autocomplete-only="true"
-                 data-e-placeholder="Agregue un proveedor de la lista"
-                 data-e-ng-model="$ctrl.item.suppliers">
-              <!--<span ng-repeat="supplier in $ctrl.item.suppliers"><b>{{supplier.text}} </b></span>-->
-              <editable-tags-input-auto-complete source="$ctrl.availableSuppliers"></editable-tags-input-auto-complete>
-            </div>
-            <div class="buttons">
-              <!-- button to show form -->
+          <div editable-tags-input="$ctrl.item.suppliers" data-e-form="xeditableNgTagsSuppliers"
+               data-e-name="tags" name="tags" id="suppliers"
+               data-e-display-property="name"
+               data-e-add-from-autocomplete-only="true"
+               data-e-placeholder="Agregue un proveedor de la lista"
+               data-e-ng-model="$ctrl.item.suppliers">
+            <!--<span ng-repeat="supplier in $ctrl.item.suppliers"><b>{{supplier.text}} </b></span>-->
+            <editable-tags-input-auto-complete
+              source="$ctrl.availableSuppliers"></editable-tags-input-auto-complete>
+          </div>
 
-              <a  ng-click="xeditableNgTagsSuppliers.$show()" ng-show="!xeditableNgTagsSuppliers.$visible">
-                <i class="ts_icon ts_icon_pencil"></i>
-              </a>
-              <!-- buttons to submit / cancel form -->
-              <div ng-show="xeditableNgTagsSuppliers.$visible">
-              <br/>
-              <button type="submit" class="btn btn-primary" ng-disabled="xeditableNgTagsSuppliers.$waiting">
-                Guardar
-              </button>
-              <button type="button" class="btn btn-default" ng-disabled="xeditableNgTagsSuppliers.$waiting" ng-click="xeditableNgTagsSuppliers.$cancel()">
-                Cancelar
-              </button>
-              </div>
-            </div>
-          </form>
+          <a ng-click="xeditableNgTagsSuppliers.$show()" ng-show="!xeditableNgTagsSuppliers.$visible">
+            <i class="ts_icon ts_icon_pencil"></i>
+          </a>
 
           <p>Etiquetas:</p>
-          <form data-editable-form name="xeditableNgTagsForm">
-            <div>
-              <span ng-repeat="tag in $ctrl.item.tags"><b>{{tag.text || tag}} </b></span>
-            </div>
-            <div editable-tags-input="$ctrl.item.tags" data-e-form="xeditableNgTagsForm"
-                 data-e-name="tags" name="tags" id="tags"
-                 data-e-placeholder="Modifique una etiqueta"
-                 data-e-ng-model="$ctrl.item.tags">
-            </div>
-            <div class="buttons">
-              <!-- button to show form -->
-
-              <a  ng-click="xeditableNgTagsForm.$show()" ng-show="!xeditableNgTagsForm.$visible">
-                <i class="ts_icon ts_icon_pencil"></i>
-              </a>
-              <!-- buttons to submit / cancel form -->
-              <div ng-show="xeditableNgTagsForm.$visible">
-                <br/>
-                <button type="submit" class="btn btn-primary" ng-disabled="xeditableNgTagsForm.$waiting">
-                  Guardar
-                </button>
-                <button type="button" class="btn btn-default" ng-disabled="xeditableNgTagsForm.$waiting" ng-click="xeditableNgTagsForm.$cancel()">
-                  Cancelar
-                </button>
-              </div>
-            </div>
-          </form>
+          <div>
+            <span ng-repeat="tag in $ctrl.item.tags"><b>{{tag.text || tag}} </b></span>
+          </div>
+          <div editable-tags-input="$ctrl.item.tags" data-e-form="xeditableNgTagsForm"
+               data-e-name="tags" name="tags" id="tags"
+               data-e-placeholder="Modifique una etiqueta"
+               data-e-ng-model="$ctrl.item.tags">
+          </div>
+          <a ng-click="xeditableNgTagsForm.$show()" ng-show="!xeditableNgTagsForm.$visible">
+            <i class="ts_icon ts_icon_pencil"></i>
+          </a>
 
         </div>
       </div>

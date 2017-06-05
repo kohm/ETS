@@ -414,6 +414,12 @@
       this.Item.get({id: this.$stateParams.id}).$promise
         .then((data) => {
           this.item = data;
+          if (this.item.age.min < 12) {
+            this.item.age.minIsMonth = true;
+          }
+          if (this.item.age.max < 12) {
+            this.item.age.maxIsMonth = true;
+          }
         })
         .catch((er) => {
           console.log(er);

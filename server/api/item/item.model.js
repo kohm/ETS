@@ -8,7 +8,7 @@ var ItemSchema = new Schema({
     age: {
       max: {
         type: Number,
-        default: 100,
+        default: 1200,
         min: 0,
         max: 1200
       },

@@ -111,7 +111,7 @@
                                             'has-error': form['price.cost'].$invalid && $ctrl.submitted }">
                   <label for="price.cost">Precio de costo</label>
                   <div class="input-group">
-                    <div class="input-group-addon">$</div>
+                    <div class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></div>
                     <input type="number" name="price.cost" class="form-control input-sm"
                            id="price.cost" placeholder="Precio de costo"
                            ng-pattern="$ctrl.minPattern"
@@ -130,7 +130,7 @@
                                             'has-error': form['price.list'].$invalid && $ctrl.submitted }">
                   <label for="price.list">Precio de lista</label>
                   <div class="input-group">
-                    <div class="input-group-addon">$</div>
+                    <div class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></div>
                     <input type="number" name="price.list" class="form-control input-sm"
                            id="price.list" placeholder="Precio de lista"
                            ng-pattern="$ctrl.minPattern"

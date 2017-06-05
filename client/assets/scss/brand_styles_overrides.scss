@@ -7,11 +7,32 @@
 @include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, 0);
 @include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, 0);
 
+.btn-female, .btn-male {
+  border-width: 2px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.125) -4px 3px 5px;
+
+  &.active, &:active {
+    box-shadow: rgba(0, 0, 0, 0.125) -4px 3px 5px;
+  }
+}
+
 .btn-female {
-  @include button-variant($btn-primary-color, #F64747, #e42c26);
+  @include button-variant(#555555, transparent, #e42c26);
+  margin-right: 15px;
+
+  &.active, &:hover {
+    background-color: #e42c26;
+    color: #fff;
+  }
 }
 .btn-male {
-  @include button-variant($btn-primary-color, #1E8BC3, $btn-primary-border);
+  @include button-variant(#555555, transparent, $btn-primary-border);
+
+  &.active, &:hover {
+    background-color: #357ebd;
+    color: #fff;
+  }
 }
 
 //navbar
