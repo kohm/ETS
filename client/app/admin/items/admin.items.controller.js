@@ -15,6 +15,9 @@
       this.ngToast = ngToast;
       this.item = {};
       this.items = [];
+      this.ppInternalCode = '';
+      this.ppAmountPerPackage = 1;
+      this.ppDescription = '';
       this.minPattern = /^\d+$/;
       this.errors = {};
       this.onlyNum = /^\d+$/;
@@ -56,7 +59,7 @@
       this.item.gender = {male: false, female: false};
       this.savedBrands = this.Item.getBrands();
       this.socket.syncUpdates('item', this.savedBrands, (event, item, array) => {
-        if (event == 'created') {
+        if (event === 'created') {
           array[array.length - 1] = item.brand
         }
       });
@@ -91,6 +94,9 @@
       if (form) {
         form.maxAge = '';
         form.minAge = '';
+        form.ppInternalCode = 'asdsad';
+        form.ppAmountPerPackage = 1;
+        form.ppDescription = '';
         form.name = '';
         form.barCode = '';
         form.brand = '';

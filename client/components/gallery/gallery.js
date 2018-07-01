@@ -7,9 +7,12 @@
     }
 
     $onInit() {
-      setTimeout(() => {console.log(this.twoWay)}, 3000);
+      setTimeout(() => {
+        console.log(this.twoWay)
+      }, 3000);
     }
   }
+
   angular.module('eetApp')
     .component('gallery', {
       controller: GalleryController,

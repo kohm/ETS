@@ -1,6 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose';
+
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
 
@@ -34,7 +35,6 @@ var ItemSchema = new Schema({
       trim: true,
       required: true
     },
-
     gender: {
       female: {type: Boolean, default: true},
       male: {type: Boolean, default: true}
@@ -71,6 +71,11 @@ var ItemSchema = new Schema({
         min: 0
       }
     },
+    productPresentation: {
+      internalCode: String,
+      amountPerPackage: {type: Number, default: 1},
+      description: String
+    },
     productNumber: String,
     suppliers: [{type: Schema.Types.ObjectId, ref: 'Supplier', required: true}],
     tags: {
@@ -90,7 +95,7 @@ var ItemSchema = new Schema({
   }
 );
 ItemSchema
-  .pre('save', function(next) {
+  .pre('save', function (next) {
     console.log(this);
     this.name = this.name.charAt(0).toUpperCase() + this.name.slice(1);
     if (this.age.min > this.age.max) {
