@@ -1,3 +1,6 @@
+<div class="section-heading">
+  <h1>Panel de administracion de productos</h1>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
@@ -93,11 +96,13 @@
                   <p>
                     <a href="#" ng-click="prodcutPresentation = !prodcutPresentation">
                       <span>Presentación del producto</span>
-                      <i class="ts_icon" ng-class="{'ts_icon_chevron_medium_up': prodcutPresentation, 'ts_icon_chevron_medium_down': !prodcutPresentation}"></i>
+                      <i class="ts_icon"
+                         ng-class="{'ts_icon_chevron_medium_up': prodcutPresentation, 'ts_icon_chevron_medium_down': !prodcutPresentation}"></i>
                     </a>
                   </p>
                   <div uib-collapse="!prodcutPresentation">
-                    <p><i>Información del producto presentada por el proveedor (Nombre del producto / Código Interno / Cantidad / Paquetes / ...)</i></p>
+                    <p><i>Información del producto presentada por el proveedor (Nombre del producto / Código Interno /
+                      Cantidad / Paquetes / ...)</i></p>
 
                     <div class="row">
                       <div class="col-md-12 col-lg-6">
@@ -112,7 +117,8 @@
                       <div class="col-md-12 col-lg-6">
                         <div class="form-group">
                           <label for="ppAmountPerPackage">Cantidad por paquete</label>
-                          <input type="number" name="ppAmountPerPackage" class="form-control input-sm" id="ppAmountPerPackage"
+                          <input type="number" name="ppAmountPerPackage" class="form-control input-sm"
+                                 id="ppAmountPerPackage"
                                  placeholder="Cantidad de items por paquete"
                                  ng-model="$ctrl.item.productPresentation.amountPerPackage" value="1">
                         </div>
@@ -241,7 +247,8 @@
           <div class="et-controls">
             <a href="#" role="button" ng-click="$ctrl.showForm()"><i class="fa fa-plus" aria-hidden="true"></i></a>
             <a href="#" role="button" ng-click="$ctrl.showSearch()"><i class="fa fa-search" aria-hidden="true"></i></a>
-            <a href="#" role="button" ng-click="$ctrl.showProductForm = false; $ctrl.showProductSearch = false"><i class="fa fa-question" aria-hidden="true"></i></a>
+            <a href="#" role="button" ng-click="$ctrl.showProductForm = false; $ctrl.showProductSearch = false"><i
+              class="fa fa-question" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="et-body">

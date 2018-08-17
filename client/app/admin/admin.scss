@@ -6,8 +6,6 @@
 
 .admin-dashboard {
   margin-left: 60px;
-  padding-left: 20px;
-  padding-top: 20px;
   background: white;
   transition: all 200ms ease;
   min-height: 256px;
@@ -23,7 +21,7 @@
   position: absolute;
   width: 60px;
   transition: all 0.2s ease;
-  padding: 20px 24px;
+  padding: 15px 24px;
   a {
     color: $active-presence;
     display: block;

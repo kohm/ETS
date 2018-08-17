@@ -9,7 +9,8 @@ angular.module('eetApp.admin')
         authenticate: 'admin'
       })
       .state('admin.sell', {
-        url: '/sell'
+        url: '/sell',
+        template: '<admin-sell></admin-sell>'
       })
       .state('admin.items', {
         url: '/items/:id',
