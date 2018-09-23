@@ -81,13 +81,15 @@ var ItemSchema = new Schema({
     tags: {
       type: [{type: String, lowercase: true, trim: true}],
       required: true
-    }
-    ,
-    stock: [{
-      depot: Number,
-      local: Number,
-      store: String
-    }],
+    },
+    stock: {
+      type: Array,
+      default: {
+        depot: 0,
+        local: 0,
+        store: String
+      }
+    },
     active: Boolean
   },
   {

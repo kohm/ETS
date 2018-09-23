@@ -4,7 +4,7 @@
 
   class AdminSellController {
     constructor() {
-
+      this.itemList = [];
     }
   }
 

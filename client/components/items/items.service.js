@@ -1,6 +1,6 @@
 'use strict';
 //TODO Learn about resource and check the getBrands method
-(function() {
+(function () {
 
   function ItemResource($resource) {
     return $resource('/api/items/:id/:string/:controller', {

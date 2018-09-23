@@ -5,16 +5,21 @@
   class TypeaheadItem {
     constructor(Item) {
       this.Item = Item;
-      this.items = [];
+      this.customPopupSelected = '';
       this.strSearch = '';
     }
 
-    $onInit() {
-      console.log(this.Item);
+    search(strSearch) {
+      return this.Item.smartFind({string: strSearch}).$promise
+        .then((data) => {
+          return data;
+        });
     }
 
-    search(strSearch) {
-      return this.Item.smartFind({string: strSearch});
+    insertItem(item) {
+      this.itemList.push(item);
+      this.customPopupSelected = '';
+      console.log(this.itemList);
     }
 
   }
@@ -22,7 +27,10 @@
   angular.module('eetApp')
     .component('typeaheadItem', {
       templateUrl: 'components/typeahead-items/typeahead-items.html',
-      controller: TypeaheadItem
+      controller: TypeaheadItem,
+      bindings: {
+        itemList: '='
+      }
     })
 
 })();

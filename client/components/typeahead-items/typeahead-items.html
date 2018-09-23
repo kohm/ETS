@@ -1,3 +1,2 @@
-<h4>Custom popup templates for typeahead's dropdown</h4>
-<pre>Model: {{customPopupSelected | json}}</pre>
-<input type="text" ng-model="customPopupSelected" placeholder="Custom popup template" uib-typeahead="item as item.name for items in $ctrl.search($viewValue)" class="form-control">
+<input class="form-control" type="text" ng-model="$ctrl.customPopupSelected"
+       placeholder="Buscar un producto" uib-typeahead="obj as obj.name for obj in $ctrl.search($viewValue)" typeahead-on-select="$ctrl.insertItem($item, $model)">

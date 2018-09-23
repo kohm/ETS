@@ -12,6 +12,7 @@ angular.module('eetApp', [
   'ngSanitize',
   'ngTagsInput',
   'ngToast',
+  'ngStorage',
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',

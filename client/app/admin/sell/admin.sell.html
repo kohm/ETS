@@ -3,21 +3,26 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-6">
-      <div class="et-panel">
-        <div class="et-header">
-          <h3 class="et-heading">Venta</h3>
-          <div class="et-controls">
-          </div>
-        </div>
-        <div class="et-body">
-          <typeahead-item></typeahead-item>
-          <button class="btn btn-default">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
+    <div class="col-lg-8 col-sm-push-2">
 
+      <table class="table table-hover" style="">
+        <tr>
+          <th class="col-md-3">Nombre</th>
+          <th class="col-md-3">Descripcion</th>
+          <th class="col-md-3">Cantidad</th>
+          <th class="col-md-3">Total</th>
+        </tr>
+        <tr ng-repeat="item in $ctrl.itemList">
+          <td class="col-md-3"><a ui-sref="catalogue({id: item._id})">{{item.name}} | {{item.brand}}</a></td>
+          <td class="col-md-3">{{item.description}}</td>
+          <td class="col-md-3">1</td>
+          <td class="col-md-3">{{item.price.list}}</td>
+        </tr>
+      </table>
+      <typeahead-item item-list="$ctrl.itemList"></typeahead-item>
+      <pre>{{$ctrl.itemList}}</pre>
+      <button class="btn btn-default">+</button>
     </div>
+
   </div>
 </div>
