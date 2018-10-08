@@ -1,0 +1,19 @@
+.selling-item-list {
+
+  display: block;
+  margin-bottom: 20px;
+  
+  .selling-item {
+
+    border-bottom: 2px solid $hover-item;
+    font-size: 25px;
+    font-weight: lighter;
+    padding: 5px 0;
+
+    .selling-item-amount {
+      display: inline-block;
+    }
+
+  }
+  
+}

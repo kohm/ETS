@@ -1,27 +1,31 @@
 <div class="section-heading">
-  <h1>Panel de ventas</h1>
+  <h1>Panel de ventas y presupuesto</h1>
 </div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-sm-push-2">
 
-      <table class="table table-hover" style="">
-        <tr>
-          <th class="col-md-3">Nombre</th>
-          <th class="col-md-3">Descripcion</th>
-          <th class="col-md-3">Cantidad</th>
-          <th class="col-md-3">Total</th>
-        </tr>
-        <tr ng-repeat="item in $ctrl.itemList">
-          <td class="col-md-3"><a ui-sref="catalogue({id: item._id})">{{item.name}} | {{item.brand}}</a></td>
-          <td class="col-md-3">{{item.description}}</td>
-          <td class="col-md-3">1</td>
-          <td class="col-md-3">{{item.price.list}}</td>
-        </tr>
-      </table>
+      <div class="selling-item-list">
+        <div class="selling-item" ng-repeat="item in $ctrl.itemList track by $index">
+          <span class="selling-item-name"  data-ng-bind="item.name" data-ellipsis>{{item.name}} | {{item.brand}}</span>
+          <span class="selling-item-description">{{item.description}}</span>
+
+          <div class="selling-item-amount">
+            <a href="#"><i class="ts_icon ts_icon_chevron_medium_down"></i></a>
+            {{item.amount}}
+            <a href="#"><i class="ts_icon ts_icon_chevron_medium_up"></i></a>
+          </div>
+
+          <span class="selling-item-unit-price">{{item.price.list * item.amount || 'Sin Precio'}}</span>
+          <span class="selling-item-total-price"></span>
+          <a href="#" class="selling-item-remove" ng-click="$ctrl.deleteItem($index)"><i class="ts_icon ts_icon_times"></i></a>
+        </div>
+      </div>
+
       <typeahead-item item-list="$ctrl.itemList"></typeahead-item>
-      <pre>{{$ctrl.itemList}}</pre>
-      <button class="btn btn-default">+</button>
+      <button class="btn btn-danger" ng-click="$ctrl.resetList()">Borrar</button>
+      <button class="btn btn-primary">Presupuesto</button>
+      <button class="btn btn-success">Venta</button>
     </div>
 
   </div>

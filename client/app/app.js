@@ -14,6 +14,7 @@ angular.module('eetApp', [
   'ngToast',
   'ngStorage',
   'btford.socket-io',
+  'dibari.angular-ellipsis',
   'ui.router',
   'ui.bootstrap',
   'validation.match',

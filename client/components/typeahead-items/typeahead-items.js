@@ -3,8 +3,9 @@
 (function () {
 
   class TypeaheadItem {
-    constructor(Item) {
+    constructor(Item, $localStorage) {
       this.Item = Item;
+      this.$storage = $localStorage;
       this.customPopupSelected = '';
       this.strSearch = '';
     }
@@ -17,7 +18,9 @@
     }
 
     insertItem(item) {
+      item['amount']  = 1;
       this.itemList.push(item);
+      this.$storage.sellItemList = this.itemList;
       this.customPopupSelected = '';
       console.log(this.itemList);
     }
